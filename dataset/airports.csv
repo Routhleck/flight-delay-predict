@@ -1,0 +1,17 @@
+IATA_CODE,AIRPORT,CITY,STATE,COUNTRY,LATITUDE,LONGITUDE
+JFK,John F. Kennedy International Airport (New York International Airport),New York,NY,USA,40.63975,-73.77893
+MIA,Miami International Airport,Miami,FL,USA,25.79325,-80.29056
+LAX,Los Angeles International Airport,Los Angeles,CA,USA,33.94254,-118.40807
+MDW,Chicago Midway International Airport,Chicago,IL,USA,41.78598,-87.75242
+ATL,Hartsfield-Jackson Atlanta International Airport,Atlanta,GA,USA,33.64044,-84.42694
+SFO,San Francisco International Airport,San Francisco,CA,USA,37.619,-122.37484
+IAH,George Bush Intercontinental Airport,Houston,TX,USA,29.98047,-95.33972
+BWI,Baltimore-Washington International Airport,Baltimore,MD,USA,39.1754,-76.6682
+DFW,Dallas/Fort Worth International Airport,Dallas-Fort Worth,TX,USA,32.89595,-97.0372
+LAS,McCarran International Airport,Las Vegas,NV,USA,36.08036,-115.15233
+SLC,Salt Lake City International Airport,Salt Lake City,UT,USA,40.78839,-111.97777
+SEA,Seattle-Tacoma International Airport,Seattle,WA,USA,47.44898,-122.30931
+PHX,Phoenix Sky Harbor International Airport,Phoenix,AZ,USA,33.43417,-112.00806
+IAH,George Bush Intercontinental Airport,Houston,TX,USA,29.98047,-95.33972
+HNL,Honolulu International Airport,Honolulu,HI,USA,21.31869,-157.92241
+MHT,Manchester-Boston Regional Airport,Manchester,NH,USA,42.93452,-71.43706
