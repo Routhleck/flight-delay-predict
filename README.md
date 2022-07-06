@@ -1,6 +1,6 @@
 ![img](https://img.shields.io/apm/l/vim-mode)       ![img](https://img.shields.io/github/contributors/Routhleck/flight-delay-predict)     ![img](https://img.shields.io/github/stars/Routhleck/flight-delay-predict?style=social)    ![img](https://img.shields.io/github/forks/Routhleck/flight-delay-predict?style=social)  ![img](https://img.shields.io/github/watchers/Routhleck/flight-delay-predict?style=social) 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 # flight-delay-predict
 flight delay predict with weather data
@@ -61,6 +61,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Routhleck"><img src="https://avatars.githubusercontent.com/u/88108241?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Routhleck Ekalesor</b></sub></a><br /><a href="#data-Routhleck" title="Data">🔣</a> <a href="https://github.com/Routhleck/flight-delay-predict/commits?author=Routhleck" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/heyi755"><img src="https://avatars.githubusercontent.com/u/85550446?v=4?s=100" width="100px;" alt=""/><br /><sub><b>是小柴同学吖</b></sub></a><br /><a href="https://github.com/Routhleck/flight-delay-predict/commits?author=heyi755" title="Code">💻</a> <a href="https://github.com/Routhleck/flight-delay-predict/issues?q=author%3Aheyi755" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

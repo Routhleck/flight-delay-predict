@@ -14,6 +14,16 @@
         "data",
         "code"
       ]
+    },
+    {
+      "login": "heyi755",
+      "name": "是小柴同学吖",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85550446?v=4",
+      "profile": "https://github.com/heyi755",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
