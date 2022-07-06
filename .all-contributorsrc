@@ -56,6 +56,15 @@
         "design",
         "platform"
       ]
+    },
+    {
+      "login": "1avish",
+      "name": "1avish",
+      "avatar_url": "https://avatars.githubusercontent.com/u/103949635?v=4",
+      "profile": "https://github.com/1avish",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
