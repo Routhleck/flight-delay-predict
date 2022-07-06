@@ -1,4 +1,4 @@
-https://img.shields.io/apm/l/vim-mode
+![img](https://img.shields.io/apm/l/vim-mode)
 # flight-delay-predict
 flight delay predict with weather data
 
