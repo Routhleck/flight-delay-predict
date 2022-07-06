@@ -1,5 +1,6 @@
 # flight-delay-predict
 flight delay predict with weather data
+
 数据清洗项目
 1.首先根据原航班信息数据对应天气信息网站手动做出机场-城市编码参考字典，其中只选择了部分机场
 2.对应填充机场的经纬度
