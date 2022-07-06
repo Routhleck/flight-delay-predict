@@ -24,6 +24,17 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "Shigakki",
+      "name": "Shichao",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92007182?v=4",
+      "profile": "https://github.com/Shigakki",
+      "contributions": [
+        "doc",
+        "ideas",
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 7,
