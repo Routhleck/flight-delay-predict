@@ -1,7 +1,9 @@
-![img](https://img.shields.io/apm/l/vim-mode)
+![img](https://img.shields.io/apm/l/vim-mode)       ![img](https://img.shields.io/github/contributors/Routhleck/flight-delay-predict)     ![img](https://img.shields.io/github/stars/Routhleck/flight-delay-predict?style=social)    ![img](https://img.shields.io/github/forks/Routhleck/flight-delay-predict?style=social)  ![img](https://img.shields.io/github/watchers/Routhleck/flight-delay-predict?style=social) 
 # flight-delay-predict
 flight delay predict with weather data
-
+<!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+![img]
 项目
 基于机器学习利用天气状况对具体航班延误状况的预测
 
