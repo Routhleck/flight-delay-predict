@@ -35,6 +35,16 @@
         "ideas",
         "projectManagement"
       ]
+    },
+    {
+      "login": "chenzefeng33",
+      "name": "chenzefeng33",
+      "avatar_url": "https://avatars.githubusercontent.com/u/87693985?v=4",
+      "profile": "https://github.com/chenzefeng33",
+      "contributions": [
+        "design",
+        "platform"
+      ]
     }
   ],
   "contributorsPerLine": 7,
