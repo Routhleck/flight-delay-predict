@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Routhleck",
+      "name": "Routhleck Ekalesor",
+      "avatar_url": "https://avatars.githubusercontent.com/u/88108241?v=4",
+      "profile": "https://github.com/Routhleck",
+      "contributions": [
+        "data",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "flight-delay-predict",
+  "projectOwner": "Routhleck",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
