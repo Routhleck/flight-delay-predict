@@ -1,7 +1,5 @@
 from flask import Flask, request, render_template
 
-import models
-from sql import Userinfo, db, Placetb
 
 app = Flask(__name__)
 

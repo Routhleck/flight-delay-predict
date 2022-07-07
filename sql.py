@@ -43,3 +43,5 @@ def queryAllthing(engine, table, resultColumn):
         sql = 'select ' + str(resultColumn) + 'from ' + str(table)
         rs = con.execute(sql)
         return rs
+
+
