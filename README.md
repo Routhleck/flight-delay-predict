@@ -14,6 +14,7 @@ flight delay predict with weather data
 基于往年航班和天气信息的对航班延迟信息的预测系统
 
 人员分工：
+  
   项目经理 解世超
   
   前端工程师 蒋涵、陈泽锋
@@ -21,8 +22,6 @@ flight delay predict with weather data
   后端工程师 何毅、江顺
   
   数据工程师 贺思超
-  
-  其中：数据库的搭建是由后端工程师何毅搭建的
 
 数据清洗项目
 
