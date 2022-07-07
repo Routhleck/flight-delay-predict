@@ -1,4 +1,7 @@
 ![img](https://img.shields.io/apm/l/vim-mode)       ![img](https://img.shields.io/github/contributors/Routhleck/flight-delay-predict)     ![img](https://img.shields.io/github/stars/Routhleck/flight-delay-predict?style=social)    ![img](https://img.shields.io/github/forks/Routhleck/flight-delay-predict?style=social)  ![img](https://img.shields.io/github/watchers/Routhleck/flight-delay-predict?style=social) 
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 # flight-delay-predict
 flight delay predict with weather data
 <!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
@@ -47,3 +50,28 @@ flight delay predict with weather data
   
 7.之后保存写入，得到初始清洗好的数据集了
 
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Routhleck"><img src="https://avatars.githubusercontent.com/u/88108241?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Routhleck Ekalesor</b></sub></a><br /><a href="#data-Routhleck" title="Data">🔣</a> <a href="https://github.com/Routhleck/flight-delay-predict/commits?author=Routhleck" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/heyi755"><img src="https://avatars.githubusercontent.com/u/85550446?v=4?s=100" width="100px;" alt=""/><br /><sub><b>是小柴同学吖</b></sub></a><br /><a href="https://github.com/Routhleck/flight-delay-predict/commits?author=heyi755" title="Code">💻</a> <a href="https://github.com/Routhleck/flight-delay-predict/issues?q=author%3Aheyi755" title="Bug reports">🐛</a> <a href="#infra-heyi755" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/Shigakki"><img src="https://avatars.githubusercontent.com/u/92007182?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shichao</b></sub></a><br /><a href="https://github.com/Routhleck/flight-delay-predict/commits?author=Shigakki" title="Documentation">📖</a> <a href="#ideas-Shigakki" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-Shigakki" title="Project Management">📆</a></td>
+    <td align="center"><a href="https://github.com/chenzefeng33"><img src="https://avatars.githubusercontent.com/u/87693985?v=4?s=100" width="100px;" alt=""/><br /><sub><b>chenzefeng33</b></sub></a><br /><a href="#design-chenzefeng33" title="Design">🎨</a> <a href="#platform-chenzefeng33" title="Packaging/porting to new platform">📦</a></td>
+    <td align="center"><a href="https://github.com/hanjiang1073"><img src="https://avatars.githubusercontent.com/u/95728193?v=4?s=100" width="100px;" alt=""/><br /><sub><b>hanjiang1073</b></sub></a><br /><a href="#design-hanjiang1073" title="Design">🎨</a> <a href="#platform-hanjiang1073" title="Packaging/porting to new platform">📦</a></td>
+    <td align="center"><a href="https://github.com/1avish"><img src="https://avatars.githubusercontent.com/u/103949635?v=4?s=100" width="100px;" alt=""/><br /><sub><b>1avish</b></sub></a><br /><a href="https://github.com/Routhleck/flight-delay-predict/commits?author=1avish" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
