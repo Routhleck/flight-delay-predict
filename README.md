@@ -13,16 +13,6 @@ flight delay predict with weather data
 
 基于往年航班和天气信息的对航班延迟信息的预测系统
 
-人员分工：
-  
-  项目经理 解世超
-  
-  前端工程师 蒋涵、陈泽锋
-  
-  后端工程师 何毅、江顺
-  
-  数据工程师 贺思超
-
 数据清洗项目
 
 1.首先根据原航班信息数据对应天气信息网站手动做出机场-城市编码参考字典，其中只选择了部分机场
@@ -54,6 +44,17 @@ flight delay predict with weather data
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
+
+### 人员分工：
+  
+  #### 项目经理 解世超
+  
+  #### 前端工程师 蒋涵、陈泽锋
+  
+  #### 后端工程师 何毅、江顺
+  
+  #### 数据工程师 贺思超
+  
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
