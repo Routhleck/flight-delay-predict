@@ -1,22 +1,49 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, jsonify
 
 from API.algorithm import setDepartureAirport, setArriveAirport, delayPredict, getDepartureWeather, getArriveWeather
 from API.loginAndRegister import login, deleteUser
 from API.loginAndRegister import signup
+from flask_cors import *
+
+
+# def after_request(response):
+#     response.headers['Access-Control-Allow-Origin'] = request.headers.get('Origin') or 'http://127.0.0.1:8080'
+#     response.headers['Access-Control-Allow-Methods'] = 'PUT,GET,POST,DELETE'
+#     response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization,Accept,Origin,Referer,User-Agent'
+#     response.headers['Access-Control-Allow-Credentials'] = 'true'
+#     return response
+
 
 app = Flask(__name__)
-
+CORS(app, supports_credentials=True)
+# app.all('*', function(req,res,next){
+#
+#
+# })
 
 @app.route('/')
+@cross_origin(supports_credentials=True)
 def hello_world():
     return 'hello,world'
 
 
 # 登陆
-@app.route('/login/<id>/<password>', methods=['get', 'get'])
-def doLogin(id, password):
+@app.route('/login', methods=['post'])
+@cross_origin(supports_credentials=True)
+def doLogin():
+    print("前端发出请求")
+    data = request.get_json()
+    id = data.get('username')
+    password = data.get('password')
+    print(id)
+    print(password)
     confirm = login(id, password)
-    return confirm
+    print(confirm)
+    return 'true'
+    # if confirm == 'success':
+    #     return 'true'
+    # else:
+    #     return 'false'
 
 
 # 注册
@@ -69,4 +96,4 @@ def doGetArriveWeather():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
