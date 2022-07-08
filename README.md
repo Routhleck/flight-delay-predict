@@ -44,6 +44,10 @@ flight delay predict with weather data
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
+#Project Dependence
+npm install echarts@4.9
+npm install --save-dev less-loader less
+
 
 ### 人员分工：
   
