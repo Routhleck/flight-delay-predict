@@ -19,7 +19,7 @@ data_train.dropna(inplace=True)
 
 cols = ['平均温度', '最高温度', '最低温度', '降水量', '气压', '风向', '风速']
 x = data_train[cols].values
-y = data_train[['出发延迟','到达延迟']].values
+y = data_train[['出发延迟']].values
 
 
 # 划分数据集
@@ -36,32 +36,34 @@ y_validation_scaled = ss_Y.transform(y_validation.reshape(-1, 1))
 
 
 # 建模(注意多标签的问题)
-'''
+
 xgb_model = xgb.XGBRegressor(max_depth=3,
                              learning_rate=0.1,
                              n_estimators=100,
                              objective='reg:squarederror',
                              booster='gbtree',
                              random_state=0)
-'''
 
+'''
 xgb_model = MultiOutputRegressor(xgb.XGBRegressor(max_depth=3,
                              learning_rate=0.1,
                              n_estimators=100,
                              objective='reg:squarederror',
                              booster='gbtree',
                              random_state=0))
-
+'''
 
 # 拟合
 xgb_model.fit(X_train_scaled, y_train_scaled)
 # 预测
 y_validation_pred = xgb_model.predict(X_validation_scaled)
-
+# 反标准化
+y_validation_pred = y_validation_pred * ss_Y.scale_[0] + ss_Y.mean_[0]
+# data_pred_departure = data_pred_departure * ss_X.scale_[0] + ss_X.mean_[0]
 # 保存模型
 joblib.dump(xgb_model, 'train/delayPredict.pkl')
 
-'''
+
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
@@ -69,7 +71,7 @@ plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 plt.plot(range(y_validation_scaled.shape[0]), y_validation_scaled, color="blue", linewidth=1.5, linestyle="-")
 plt.plot(range(y_validation_pred.shape[0]), y_validation_pred, color="red", linewidth=1.5, linestyle="-.")
 plt.legend(['真实值', '预测值'])
-plt.title("到达延迟真实值与预测值比对图")
+plt.title("出发延迟真实值与预测值比对图")
 plt.show()  #显示图片
 
 
@@ -89,4 +91,3 @@ feature_list = list(data_tmp.columns)
 feature_importances = [(feature, round(importance, 2)) for feature, importance in zip(feature_list, importances)]
 feature_importances = sorted(feature_importances, key=lambda x: x[1], reverse=True)
 
-'''

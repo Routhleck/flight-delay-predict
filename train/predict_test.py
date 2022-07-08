@@ -12,8 +12,14 @@ def predict(data):
     model_arive = joblib.load('train/delayArive.pkl')
     # 标准化
     ss_X = preprocessing.StandardScaler()
-    data_test = pd.DataFrame(data_test).T
+    data = pd.DataFrame(data).T
     data_scaled = ss_X.fit_transform(data)
     data_pred_departure = model_departure.predict(data_scaled)
     data_pred_arrive = model_arive.predict(data_scaled)
+    # 反标准化
+    # 反归一化
+    data_pred_departure = data_pred_departure * ss_X.scale_[0] + ss_X.mean_[0]
+    data_pred_arrive = data_pred_arrive * ss_X.scale_[0] + ss_X.mean_[0]
     return data_pred_departure, data_pred_arrive
+
+print(predict(data_test))
