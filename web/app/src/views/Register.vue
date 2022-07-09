@@ -21,10 +21,10 @@
       <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>项目经理：解世超</el-dropdown-item>
           <el-dropdown-item>服务端工程师：何毅</el-dropdown-item>
-          <el-dropdown-item>服务端工程师：贺思超</el-dropdown-item>
+          <el-dropdown-item>服务端工程师：江顺</el-dropdown-item>
           <el-dropdown-item>客户端工程师：陈泽锋</el-dropdown-item>
           <el-dropdown-item>客户端工程师：蒋涵</el-dropdown-item>
-          <el-dropdown-item>数据库工程师：江顺</el-dropdown-item>
+          <el-dropdown-item>数据库工程师：贺思超</el-dropdown-item>
   </el-dropdown-menu>
 </el-dropdown>
       </div>
