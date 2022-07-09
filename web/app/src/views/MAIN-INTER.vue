@@ -123,10 +123,8 @@
             },
             sure () {
                 alert("确定");
-                this.mainForm.showmsg = this.msg;
-                this.mainForm.showemsg = this.emsg;
-                console.log(this.msg);
-                console.log(this.emsg);
+
+
                 this.axios.post('http://localhost:5000/setDepartureAirport',this.mainForm).then((resp)=>{
                     let data = resp.data;
                     if(data.toString()==this.msg){
@@ -311,17 +309,22 @@
                     if(params.seriesType == "effectScatter"){
 
                         if(this.thehint == "请选择出发机场"){
-
                         this.msg = params.name;
+                        this.mainForm.showmsg=this.getCode(data1,params.name);
+                        console.log(this.getCode(data1,params.name));
                          this.thehint =  "请选择目的机场" ;
                         }
                         else if(this.thehint == "请选择目的机场"){
+
                         this.emsg = params.name;
+                        this.mainForm.showemsg=this.getCode(data1,params.name);
+                        console.log(this.getCode(data1,params.name));
                         this.buttonShow = true;
                             this.thehint =  "请点击确认";
                         }
                         else if(this.thehint == "请点击确认"){
-                            alert("请点击确定或取消")
+                            alert("请点击确定或取消");
+                            this.buttonShow = false;
                         }
                     }
 
@@ -344,115 +347,123 @@
                   var geoCoordMap = [
                     {
                       name: "罗家机场",
-                      value: [117.18, 29.27, 20],
+                      value: [117.18, 29.27, "JDZ"],
                     },
                     {
                       name: "浦东机场",
-                      value: [121.80, 31.16, 60],
+                      value: [121.80, 31.16, "PVG"],
                     },
                     {
                       name: "通辽机场",
-                      value: [122.256, 43.62, 20],
+                      value: [122.256, 43.62, "TGO"],
                     },
                     {
                       name: "高崎国际机场",
-                      value: [118.03, 24.48, 10],
+                      value: [118.03, 24.48, "XMN"],
                     },
                     {
                       name: "地窝堡国际机场",
-                      value: [88.31, 43.36, 10],
+                      value: [88.31, 43.36, "URC"],
                     },
                     {
                       name: "武宿国际机场",
-                      value: [112.487, 37.94, 11],
+                      value: [112.487, 37.94, "TYN"],
                     },
                     {
                       name: "宝安机场",
-                      value: [113.88, 22.55, 12],
+                      value: [113.88, 22.55, "SZX"],
                     },
                     {
                       name: "凤凰国际机场",
-                      value: [109.75, 18.4, 13],
+                      value: [109.75, 18.4, "SYX"],
                     },
                     {
                       name: "流亭国际机场",
-                      value: [120.396, 36.9, 14],
+                      value: [120.396, 36.9, "TAO"],
                     },
                     {
                       name: "遥墙国际机场",
-                      value: [116.75, 35.8, 15],
+                      value: [116.75, 35.8, "TNA"],
                     },
                     {
                       name: "正定机场",
-                      value: [115.0, 40.03],
+                      value: [115.0, 40.03,"SJW"],
                     },
                     {
                       name: "桃仙国际机场",
-                      value: [123.47, 41.8],
+                      value: [123.47, 41.8,"SHE"],
                     },
                     {
                       name: "虹桥机场",
-                      value: [122.34, 30.196],
+                      value: [122.34, 30.196,"SHA"],
                     },
                     {
                       name: "首都国际机场",
-                      value: [116.35, 39.04],
+                      value: [116.35, 39.04,"PEK"],
                     },
                     {
                       name: "禄口国际机场",
-                      value: [119.89, 32.33],
+                      value: [119.89, 32.33,"NKG"],
                     },
                     {
                       name: "两江国际机场",
-                      value: [110.3, 25.3],
+                      value: [110.3, 25.3,"KWL"],
                     },
                     {
                       name: "长水国际机场",
-                      value: [101.82, 24.9],
+                      value: [101.82, 24.9, "KMG"],
                     },
                     {
                       name: "太平机场",
-                      value: [126.96, 45.55],
+                      value: [126.96, 45.55, "HRB"],
                     },
                     {
                       name: "白塔机场",
-                      value: [111.62, 40.8],
+                      value: [111.62, 40.8,"HET"],
                     },
                     {
                       name: "萧山国际机场",
-                      value: [120.21, 28.2],
+                      value: [120.21, 28.2,"HGH"],
                     },
                     {
                       name: "长乐国际机场",
-                      value: [119.27, 26.04],
+                      value: [119.27, 26.04,"FOC"],
                     },
                     {
                       name: "双流机场",
-                      value: [104.1, 30.66],
+                      value: [104.1, 30.66,"CTU"],
                     },
                     {
                       name: "江北机场",
-                      value: [106.54, 29.4],
+                      value: [106.54, 29.4,"CKG"],
                     },
                     {
                       name: "合肥机场",
-                      value: [117.3, 31.69],
+                      value: [117.3, 31.69,"HFE"],
                     },
                     {
                       name: "新郑国际机场",
-                      value: [113.64, 34.72],
+                      value: [113.64, 34.72,"CGO"],
                     },
                     {
                       name: "吐鲁番交河机场",
-                      value: [89.2, 40.94],
+                      value: [89.2, 40.94,"TLQ"],
                     },
                     {
                       name: "天河机场",
-                      value: [114.03, 30.58],
+                      value: [114.03, 30.58,"WUH"],
                     },
                   ];
                   return geoCoordMap;
                 },
+                 getCode(data2,name1){
+                 for(let i = 0;i < data2.length;i++){
+                     if(data2[i].name == name1){
+                         return data2[i].value[2];
+                     }
+                 }
+                 return "out";
+                 },
               },
 
     }
