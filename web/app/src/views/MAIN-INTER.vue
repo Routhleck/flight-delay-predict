@@ -93,12 +93,13 @@
         data() {
             return {
                 mainForm: {
-
+                     showmsg : '',
+                     showemsg : '',
                 },
                 buttonShow : false,
                 count: 0,
                 thehint : "请选择出发机场",
-                msg :"请选择",
+                msg : "请选择",
                 emsg : "请选择",
             }
 
@@ -116,12 +117,23 @@
                 alert("取消");
                 this.count= 0;
                 this.thehint = "请选择出发机场";
-                this.msg ="请选择",
+                this.msg = "请选择",
                 this.emsg = "请选择";
                 return;
             },
             sure () {
-                alert("确定")
+                alert("确定");
+                this.mainForm.showmsg = this.msg;
+                this.mainForm.showemsg = this.emsg;
+                console.log(this.msg);
+                console.log(this.emsg);
+                this.axios.post('http://localhost:5000/setDepartureAirport',this.mainForm).then((resp)=>{
+                    let data = resp.data;
+                    if(data.toString()==this.msg){
+
+                    }
+
+                })
              },
             checkadd(){
                 this.$router.push({path:'/Manager'})
