@@ -177,20 +177,23 @@
                 this.$router.push({path: 'MAIN-INTER'})
             },
             addUser() {
-                  this.$refs.addUserFormRef.validate(async (valid) => {
-                    if (!valid) return
-                    // 成功后向api发出添加用户的网络请求
-                    const { data: res } = await this.$http.post('users', this.addUserForm)
-                    if (res.meta.status !== 201) {
-                      this.$message.error('添加用户失败!')
-                    }
-                    this.$message.success('添加用户成功!')
+
+                    this.axios.post('http://localhost:5000/adduser',this.addUserForm).then((resp) =>{
+                    let data = resp.data;
+                    if(data.toString()=="true"){
+                this.$message({
+                    message: '添加成功',
+                    type: 'success'
+                });
                     // 隐藏添加用户的对话框
                     this.addDialogVisible = false
                     // 重新获取用户列表
                     this.getUserList()
-                  })
-                },
+                    }else{
+                        this.$message.error('添加失败');
+                    }
+                })
+                  },
              async getUserList() {
                       const { data: res } = await this.$http.get('users', {
                         params: this.queryInfo,

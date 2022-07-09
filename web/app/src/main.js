@@ -12,12 +12,10 @@ Vue.use(VueParticles)
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.use(VueAxios,axios)
-//axios.defaults.baseURL = '/api'
 
 new Vue({
   router,
   store,
+  axios,
   render: h => h(App)
 }).$mount('#app')
-
-

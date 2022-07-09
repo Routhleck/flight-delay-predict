@@ -41,7 +41,7 @@
       </div>
       <div class = "gl">
           <el-button round @click="buttonShow && sure()" style="position: relative">确定</el-button>
-          <el-button round style="position: relative">取消</el-button>
+          <el-button round style="position: relative" @click.native="toCancel()">取消</el-button>
           </div>
       <div>
       <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto; color: #fff">
@@ -112,6 +112,14 @@
                 if(this.count<6)
                 this.count += 1
              },
+            toCancel() {
+                alert("取消");
+                this.count= 0;
+                this.thehint = "请选择出发机场";
+                this.msg ="请选择",
+                this.emsg = "请选择";
+                return;
+            },
             sure () {
                 alert("确定")
              },
@@ -301,7 +309,7 @@
                             this.thehint =  "请点击确认";
                         }
                         else if(this.thehint == "请点击确认"){
-                            alert("请点击确定或清空")
+                            alert("请点击确定或取消")
                         }
                     }
 

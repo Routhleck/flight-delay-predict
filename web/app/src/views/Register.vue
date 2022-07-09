@@ -97,7 +97,6 @@
                 registerForm:{
                     username:'',
                     password:'',
-                    checked:''
                 },
                 rules:{
                     username:[
@@ -122,25 +121,18 @@
             },
             submitForm(formName) {
 
-                // this.axios.post('',this.loginForm).then((resp) =>{
-                //     let data = resp.data;
-                //     if(data.success){
-                //       this.registerForm = {};
-                // this.$message({
-                //     message: '注册成功',
-                //     type: 'success'
-                // });
-                // this.$router.push({path: '/'})
-                //     }
-                // })
-
-                console.log('submit!',this.registerForm);
-                this.registerForm={};
+                this.axios.post('http://localhost:5000/signup',this.registerForm).then((resp) =>{
+                    let data = resp.data;
+                    if(data.toString()=="true"){
+                      this.registerForm = {};
                 this.$message({
-                    message:'注册成功',
-                    type:'success'
+                    message: '注册成功',
+                    type: 'success'
                 });
-                this.$router.push({path:'/'})
+                this.$router.push({path: '/'})
+                    }
+                })
+
             }
         }
     }

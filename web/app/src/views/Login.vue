@@ -78,26 +78,18 @@
 
                 this.axios.post('http://localhost:5000/login',this.loginForm).then((resp) =>{
                     let data = resp.data;
-                    console.log(data.toString());
-                    console.log(data.toString() == "true");
-                    if(data.toString() == 'true'){
-                      console.log(data);
+                    if(data.toString()=="true"){
                       this.loginForm = {};
                 this.$message({
                     message: '登录成功',
                     type: 'success'
                 });
                 this.$router.push({path: '/MAIN-INTER'})
+                    }else{
+                        this.$message.error('登录失败');
                     }
                 })
 
-                // console.log('submit!', this.loginForm);
-                // this.loginForm = {};
-                // this.$message({
-                //     message: '登录成功',
-                //     type: 'success'
-                // });
-                // this.$router.push({path: '/MAIN-INTER'})
             },
             toRegister() {
                 this.$router.push({path: '/Register'})
