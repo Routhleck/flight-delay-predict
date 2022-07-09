@@ -127,14 +127,32 @@
 
                 this.axios.post('http://localhost:5000/setDepartureAirport',this.mainForm).then((resp)=>{
                     let data = resp.data;
-                    if(data.toString()==this.msg){
-
+                    if(data.toString()=="true"){
+                        this.axios.post('http://localhost:5000/setArriveAirport',this.mainForm).then((resp)=>{
+                            let data = resp.data;
+                            this.$message({
+                                message: '选择成功',
+                                type: 'success'
+                            });
+                        })
                     }
-
                 })
              },
             checkadd(){
-                this.$router.push({path:'/Manager'})
+
+                let name1 = JSON.parse(this.$route.query.user_name);
+                console.log(name1);
+                this.axios.post('',name1).then((resp)=>{
+                    let data = resp.data;
+                    if(data.toString()=="true"){
+                     this.$router.push({path:'/Manager'})
+                    }else {
+                        this.$message({
+                                message: '你没有权限',
+                                type:'error'
+                            });
+                    }
+                })
             },
             exits(){
                 this.$router.push({path: '/'})

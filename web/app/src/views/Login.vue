@@ -79,12 +79,12 @@
                 this.axios.post('http://localhost:5000/login',this.loginForm).then((resp) =>{
                     let data = resp.data;
                     if(data.toString()=="true"){
-                      this.loginForm = {};
                 this.$message({
                     message: '登录成功',
                     type: 'success'
                 });
-                this.$router.push({path: '/MAIN-INTER'})
+                // this.$router.push({name: 'MAIN-INTER',params:{user_name:this.loginForm.username}})
+                this.$router.push({path: '/MAIN-INTER',query:{user_name:this.loginForm.username}})
                     }else{
                         this.$message.error('登录失败');
                     }
