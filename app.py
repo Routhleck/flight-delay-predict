@@ -6,14 +6,6 @@ from API.loginAndRegister import signup
 from flask_cors import *
 
 
-# def after_request(response):
-#     response.headers['Access-Control-Allow-Origin'] = request.headers.get('Origin') or 'http://127.0.0.1:8080'
-#     response.headers['Access-Control-Allow-Methods'] = 'PUT,GET,POST,DELETE'
-#     response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization,Accept,Origin,Referer,User-Agent'
-#     response.headers['Access-Control-Allow-Credentials'] = 'true'
-#     return response
-
-
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 # app.all('*', function(req,res,next){
@@ -39,17 +31,24 @@ def doLogin():
     print(password)
     confirm = login(id, password)
     print(confirm)
-    return 'true'
-    # if confirm == 'success':
-    #     return 'true'
-    # else:
-    #     return 'false'
+    if confirm == 'success':
+        return 'true'
+    else:
+        return 'false'
 
 
 # 注册
-@app.route('/signup/<id>/<password>', methods=['get'])
-def dosignup(id, password):
+@app.route('/signup', methods=['post'])
+@cross_origin(supports_credentials=True)
+def dosignup():
+    data = request.get_json()
+    id = data.get('username')
+    password = data.get('password')
+    print(id)
+    print(password)
     confirm = signup(id, password)
+    print(confirm)
+    return 'true'
     return confirm
 
 
@@ -61,11 +60,24 @@ def dodelete(userid):
 
 
 # 选择起始机场
-@app.route('/setDepartureAirport/<departureAirport>')
-def doSetDepartureAirport(departureAirport):
-    confirm = setDepartureAirport(departureAirport)
-    return confirm
+@app.route('/setDepartureAirport',methods=['post'])
+@cross_origin(supports_credentials=True)
+def doSetDepartureAirport():
+    data = request.get_json()
+    print(data)
+    firstair = data.get('showmsg')
+    secondair = data.get('showemsg')
+    print(firstair)
+    confirm1 = setDepartureAirport(firstair)
+    confirm2 = setArriveAirport(secondair)
+    print(confirm1)
+    return confirm1
 
+# # 选择起始机场
+# @app.route('/setDepartureAirport/<departureAirport>')
+# def doSetDepartureAirport(departureAirport):
+#     confirm = setDepartureAirport(departureAirport)
+#     return confirm
 
 # 选择到达机场
 @app.route('/setArriveAirport/<arriveAirport>')
