@@ -93,9 +93,14 @@ def doSetArriveAirport(arriveAirport):
 
 
 # 延误预测
-@app.route('/delayPredict/<arriveAirport>')
-def doDelayPredict(arriveAirport):
-    confirm = delayPredict()
+@app.route('/delayPredict')
+def doDelayPredict():
+    # data = request.get_json()
+    # print(data)
+    # hour = data.get('hour')
+    # print(hour)
+    hour = 13
+    confirm = delayPredict(hour)
     return confirm
 
 

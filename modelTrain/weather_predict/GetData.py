@@ -1,5 +1,5 @@
 import urllib3
-
+import requests
 
 class GetData:
     url = ""
@@ -29,5 +29,7 @@ class GetData:
         """
         :return: 网址对应的网页内容
         """
+        # http = urllib3.PoolManager()
         http = urllib3.PoolManager()
+        requests.DEFAULT_RETRIES = 5
         return http.request('GET', self.url, headers=self.headers).data

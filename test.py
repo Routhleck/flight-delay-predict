@@ -1,11 +1,11 @@
 from API.algorithm import setDepartureAirport, setArriveAirport, delayPredict, getDepartureWeather, getArriveWeather
 
 # 一个一个测试
-setDepartureAirport('JDZ')
+#setDepartureAirport('JDZ')
 
 # setArriveAirport('CGO')
 
-# delayPredict()
+delayPredict(10)
 
 # print(getDepartureWeather())
 # print(getArriveWeather())

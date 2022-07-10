@@ -3,11 +3,11 @@ import joblib
 from sklearn import preprocessing
 
 # 加载模型
-model = joblib.load('train/delayPredict_0710.pkl')
+model = joblib.load('modelTrain/predict/delayPredict_0710.pkl')
 # 加载字典映射csv
-id = pd.read_csv('train/dict_id.csv', encoding= 'gbk')
-departure = pd.read_csv('train/dict_departure.csv', encoding= 'gbk')
-arrival = pd.read_csv('train/dict_arrival.csv', encoding= 'gbk')
+id = pd.read_csv('modelTrain/predict/dict_id.csv', encoding= 'gbk')
+departure = pd.read_csv('modelTrain/predict/dict_departure.csv', encoding= 'gbk')
+arrival = pd.read_csv('modelTrain/predict/dict_arrival.csv', encoding= 'gbk')
 
 # 将id, departure, arrival存储为字典
 id_dict = {}
@@ -26,7 +26,6 @@ def predict(data):
 
     data[0] = departure_dict[data[0]]
     data[1] = arrival_dict[data[1]]
-    data[2] = id_dict[data[2]]
 
     data = pd.DataFrame(data).T
 
