@@ -1,13 +1,14 @@
 from flask import Flask, request, jsonify
 
 from API.algorithm import setDepartureAirport, setArriveAirport, delayPredict, getDepartureWeather, getArriveWeather
-from API.loginAndRegister import login, deleteUser, judgeAdmin
+from API.loginAndRegister import login, deleteUser, judgeAdmin, selectAllUser
 from API.loginAndRegister import signup
 from flask_cors import *
 
-
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
+
+
 # app.all('*', function(req,res,next){
 #
 #
@@ -48,19 +49,21 @@ def dosignup():
     print(password)
     confirm = signup(id, password)
     print(confirm)
-    return 'true'
     return confirm
 
 
 # 删除
-@app.route('/deleteuser/<userid>')
-def dodelete(userid):
-    confirm = deleteUser(userid)
+@app.route('/deleteuser')
+@cross_origin(supports_credentials=True)
+def dodelete():
+    data = request.get_json()
+    id = data.get('username')
+    confirm = deleteUser(id)
     return confirm
 
 
 # 选择起始机场
-@app.route('/setDepartureAirport',methods=['post'])
+@app.route('/setDepartureAirport', methods=['post'])
 @cross_origin(supports_credentials=True)
 def doSetDepartureAirport():
     data = request.get_json()
@@ -70,6 +73,7 @@ def doSetDepartureAirport():
     setDepartureAirport(firstair)
     return "true"
 
+
 # # 选择起始机场
 # @app.route('/setDepartureAirport/<departureAirport>')
 # def doSetDepartureAirport(departureAirport):
@@ -77,7 +81,7 @@ def doSetDepartureAirport():
 #     return confirm
 
 # 选择到达机场
-@app.route('/setArriveAirport',methods=['post'])
+@app.route('/setArriveAirport', methods=['post'])
 @cross_origin(supports_credentials=True)
 def doSetArriveAirport(arriveAirport):
     data = request.get_json()
@@ -110,16 +114,21 @@ def doGetArriveWeather():
 
 
 # 判断权限
-@app.route('/judgeAdmin',methods=['post'])
+@app.route('/judgeAdmin', methods=['post'])
 @cross_origin(supports_credentials=True)
 def doJudgeAdmin():
     data = request.get_json()
-    print(data)
     id = data.get('username')
-    print(id)
     confirm = judgeAdmin(id)
-    print(confirm)
     return confirm
+
+
+# 列出所有用户
+@app.route('/listUser', methods=['post'])
+@cross_origin(supports_credentials=True)
+def listAllUser():
+    rs = selectAllUser()
+    return str(rs)
 
 
 if __name__ == '__main__':
