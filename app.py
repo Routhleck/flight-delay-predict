@@ -124,7 +124,7 @@ def doJudgeAdmin():
 
 
 # 列出所有用户
-@app.route('/listUser', methods=['post'])
+@app.route('/listUser', methods=['get'])
 @cross_origin(supports_credentials=True)
 def listAllUser():
     rs = selectAllUser()
