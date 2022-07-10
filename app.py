@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 
 from API.algorithm import setDepartureAirport, setArriveAirport, delayPredict, getDepartureWeather, getArriveWeather
-from API.loginAndRegister import login, deleteUser
+from API.loginAndRegister import login, deleteUser, judgeAdmin
 from API.loginAndRegister import signup
 from flask_cors import *
 
@@ -66,12 +66,9 @@ def doSetDepartureAirport():
     data = request.get_json()
     print(data)
     firstair = data.get('showmsg')
-    secondair = data.get('showemsg')
     print(firstair)
-    confirm1 = setDepartureAirport(firstair)
-    confirm2 = setArriveAirport(secondair)
-    print(confirm1)
-    return confirm1
+    setDepartureAirport(firstair)
+    return "true"
 
 # # 选择起始机场
 # @app.route('/setDepartureAirport/<departureAirport>')
@@ -80,8 +77,13 @@ def doSetDepartureAirport():
 #     return confirm
 
 # 选择到达机场
-@app.route('/setArriveAirport/<arriveAirport>')
+@app.route('/setArriveAirport',methods=['post'])
+@cross_origin(supports_credentials=True)
 def doSetArriveAirport(arriveAirport):
+    data = request.get_json()
+    print(data)
+    secondair = data.get('showemsg')
+    print(secondair)
     confirm = setArriveAirport(arriveAirport)
     return confirm
 
@@ -104,6 +106,16 @@ def doGetDepartureWeather():
 @app.route('/getArriveWeather')
 def doGetArriveWeather():
     confirm = getArriveWeather()
+    return confirm
+
+
+# 判断权限
+@app.route('/judgeAdmin',methods=['post'])
+@cross_origin(supports_credentials=True)
+def doJudgeAdmin():
+    data = request.get_json()
+    id = data.get('username')
+    confirm = judgeAdmin(id)
     return confirm
 
 

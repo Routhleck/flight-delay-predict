@@ -50,5 +50,18 @@ def deleteUser(userid):
     session.close()
     return "true"
 
+# 判断权限接口
+def judgeAdmin(idNum):
+    global isAdmin
+    rs = querySomething(engine, 'user', idNum, "userId", "isAdmin")
+    for row in rs:
+        isAdmin = str(row[0])
+
+    if isAdmin == 1:
+        return "true"
+    else:
+        return "false"
+
+
 
 
