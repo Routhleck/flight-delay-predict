@@ -31,7 +31,7 @@ def setDepartureAirport(departureAirport):
     # 起始机场天气预测
     isDeparture = True
     weather_predict_single(departureAirport, engine, Session, isDeparture)
-    return "true"
+    return True
 
 # 选择到达机场
 def setArriveAirport(arriveAirport):
@@ -64,7 +64,7 @@ def setArriveAirport(arriveAirport):
     # 到达机场天气预测
     isDeparture = False
     weather_predict_single(departureAirport, engine, Session, isDeparture)
-    return "true"
+    return True
 
 # 延误预测
 def delayPredict():
@@ -106,7 +106,7 @@ def delayPredict():
         session.commit()
         session.close()
     print('延误预测完成')
-    return "true"
+    return True
 
 # 获取出发天气
 def getDepartureWeather():
@@ -142,7 +142,7 @@ def getDepartureWeather():
         weatherList.append(i)
     session.close()
     # 返回天气与延误信息二维列表，形式如：[date, avg_temp, max_temp, min_temp, prec, pressure, wind_direction, wind_speed, delayDeparture, delayArrive]
-    return str(weatherList[0:len(weatherList)-1][1:11])
+    return weatherList[0:len(weatherList)-1][1:11]
 
 # 获取到达天气
 def getArriveWeather():
@@ -183,4 +183,4 @@ def getArriveWeather():
         weatherList.append(i)
     session.close()
     # 返回天气信息二维列表，形式如：[date, avg_temp, max_temp, min_temp, prec, pressure, wind_direction, wind_speed]
-    return str(weatherList[0:len(weatherList)-1][1:9])
+    return weatherList[0:len(weatherList)-1][1:9]
