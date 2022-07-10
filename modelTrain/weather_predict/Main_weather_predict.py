@@ -113,11 +113,11 @@ def weather_predict_single(airportId, engine, session, isDeparture):
     all_windSpeed = []
     for a in range(1, 8):
         today = DT.datetime.now()
-        time_now = (today + DT.timedelta(days=a)).date()
+        time_now = (today + DT.timedelta(days=a)).strftime('%Y-%m-%d')
         # csv_writer.writerow(
         value = str(airport_dict[airportId]) + ', \' ' + str(time_now) + ' \' ,' + str(preds[a][0]) + ',' + str(
             preds[a][1]) + ',' + str(preds[a][2]) + ',' + str(preds[a][3]) + ',' + str(preds[a][4]) + ',' + str(
-            preds[a][5]) + ',' + str(preds[a][6]) + ',' + '0' + ',' + '0'
+            preds[a][5]) + ',' + str(preds[a][6]) + ',' + str(time_now).split('-')[0] + ',' + str(time_now).split('-')[1] + ',' + str(time_now).split('-')[2] + ',' + '0'
         if isDeparture == True:
             # 删除departureWeather表中的所有数据
             sql = "DELETE FROM departureWeather"
