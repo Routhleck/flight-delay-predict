@@ -1,28 +1,3 @@
-出发机场,id
-SHA,14
-SHE,15
-WUH,25
-CKG,1
-PEK,12
-HRB,7
-NKG,11
-SYX,17
-XMN,26
-PVG,13
-SZX,18
-TGO,20
-KWL,10
-CGO,0
-HET,4
-TAO,19
-HGH,6
-CTU,2
-FOC,3
-HFE,5
-TYN,23
-SJW,16
-TNA,22
-URC,24
-KMG,9
-JDZ,8
-TLQ,21
+version https://git-lfs.github.com/spec/v1
+oid sha256:71c584b9243e8e90c1df0cb6a847f109b5fec5cf004dd045b412fea10e1513ad
+size 219

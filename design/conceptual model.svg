@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="165mm" xmlns="http://www.w3.org/2000/svg" height="176mm" version="1.1" viewBox="0 0 625 668" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <polyline fill="none" points="171,358 108,358" stroke="#0080c0" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="108,358 108,456" stroke="#0080c0" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="98,470 108,443 117,470 98,470" stroke="#0080c0" stroke-width="1"/>
+   <text x="108" y="354" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">arriveWeather</text>
+   <polyline fill="none" points="277,286 277,88" stroke="#0080c0" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="277,88 262,88" stroke="#0080c0" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="249,78 275,88 249,97 249,78" stroke="#0080c0" stroke-width="1"/>
+   <text x="276" y="90" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">departureWeather</text>
+   <polyline fill="none" points="274,358 274,438" stroke="#0080c0" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="274,438 411,438" stroke="#0080c0" stroke-width="1"/>
+   <polyline fill="none" points="424,447 398,438 424,429 424,447" stroke="#0080c0" stroke-width="1"/>
+   <text x="274" y="441" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">depAirport</text>
+   <polyline fill="none" points="517,322 385,322" stroke="#0080c0" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="517,411 517,322" stroke="#0080c0" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="508,425 517,398 526,425 508,425" stroke="#0080c0" stroke-width="1"/>
+   <text x="516" y="318" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">ariAirport</text>
+   <defs>
+      <linearGradient id="Gradient1" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b2d6fc"/>
+      </linearGradient>
+   </defs>
+   <rect x="20" y="611" rx="6" ry="6" fill="url(#Gradient1)" width="192" height="53" stroke="#0080c0" stroke-width="1"/>
+   <text x="116" y="621" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">airline</text>
+   <text x="28" y="634" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">#</text>
+   <text x="28" y="645" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="41" y="634" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">airline</text>
+   <text x="41" y="645" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">id</text>
+   <text x="84" y="634" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Variable characters (10)</text>
+   <text x="84" y="645" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <defs>
+      <linearGradient id="Gradient2" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b2d6fc"/>
+      </linearGradient>
+   </defs>
+   <rect x="163" y="286" rx="9" ry="9" fill="url(#Gradient2)" width="222" height="72" stroke="#0080c0" stroke-width="1"/>
+   <text x="274" y="296" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">airport</text>
+   <text x="173" y="309" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">#</text>
+   <text x="173" y="320" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="173" y="331" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="173" y="342" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="173" y="353" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="186" y="309" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">airportId</text>
+   <text x="186" y="320" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">airportName</text>
+   <text x="186" y="331" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">weatherId</text>
+   <text x="186" y="342" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">longitude</text>
+   <text x="186" y="353" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">latitude</text>
+   <text x="249" y="309" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Variable characters (10)</text>
+   <text x="249" y="320" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Variable characters (255)</text>
+   <text x="249" y="331" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Variable characters (10)</text>
+   <text x="249" y="342" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="249" y="353" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <defs>
+      <linearGradient id="Gradient3" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b2d6fc"/>
+      </linearGradient>
+   </defs>
+   <rect x="2" y="456" rx="14" ry="14" fill="url(#Gradient3)" width="212" height="116" stroke="#0080c0" stroke-width="1"/>
+   <text x="107" y="466" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">arriveweather</text>
+   <text x="14" y="479" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="14" y="490" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">#</text>
+   <text x="14" y="501" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="14" y="512" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="14" y="523" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="14" y="534" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="14" y="545" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="14" y="556" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="14" y="567" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="27" y="479" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">weatherId</text>
+   <text x="27" y="490" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">date</text>
+   <text x="27" y="501" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">avg_temp</text>
+   <text x="27" y="512" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">max_temp</text>
+   <text x="27" y="523" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">min_temp</text>
+   <text x="27" y="534" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">prec</text>
+   <text x="27" y="545" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">pressure</text>
+   <text x="27" y="556" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">wind_dir</text>
+   <text x="27" y="567" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">wind_sp</text>
+   <text x="80" y="479" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Variable characters (10)</text>
+   <text x="80" y="490" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Date</text>
+   <text x="80" y="501" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="80" y="512" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="80" y="523" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="80" y="534" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="80" y="545" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="80" y="556" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="80" y="567" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <defs>
+      <linearGradient id="Gradient4" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b2d6fc"/>
+      </linearGradient>
+   </defs>
+   <rect x="22" y="2" rx="22" ry="22" fill="url(#Gradient4)" width="240" height="182" stroke="#0080c0" stroke-width="1"/>
+   <text x="142" y="12" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">departureweather</text>
+   <text x="38" y="25" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="38" y="36" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="47" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="58" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="69" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="80" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="91" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="102" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="113" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="124" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="135" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="38" y="146" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="38" y="157" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="38" y="168" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="38" y="179" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="51" y="25" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">weatherId</text>
+   <text x="51" y="36" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">avg_temp</text>
+   <text x="51" y="47" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">max_temp</text>
+   <text x="51" y="58" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">min_temp</text>
+   <text x="51" y="69" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">prec</text>
+   <text x="51" y="80" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">pressure</text>
+   <text x="51" y="91" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">wind_dir</text>
+   <text x="51" y="102" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">wind_sp</text>
+   <text x="51" y="113" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">year</text>
+   <text x="51" y="124" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">month</text>
+   <text x="51" y="135" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">day</text>
+   <text x="51" y="146" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">normal_prob</text>
+   <text x="51" y="157" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">mild_prob</text>
+   <text x="51" y="168" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">moderate_prob</text>
+   <text x="51" y="179" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">serious_prob</text>
+   <text x="124" y="25" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Variable characters (10)</text>
+   <text x="124" y="36" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="124" y="47" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="124" y="58" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="124" y="69" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="124" y="80" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="124" y="91" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="124" y="102" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (10)</text>
+   <text x="124" y="113" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="124" y="124" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="124" y="135" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+   <text x="124" y="146" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (6)</text>
+   <text x="124" y="157" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (6)</text>
+   <text x="124" y="168" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (6)</text>
+   <text x="124" y="179" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Float (6)</text>
+   <defs>
+      <linearGradient id="Gradient5" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b2d6fc"/>
+      </linearGradient>
+   </defs>
+   <rect x="411" y="411" rx="6" ry="6" fill="url(#Gradient5)" width="212" height="54" stroke="#0080c0" stroke-width="1"/>
+   <text x="517" y="421" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">selectairport</text>
+   <text x="419" y="434" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="419" y="445" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="432" y="434" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">arriveId</text>
+   <text x="432" y="445" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">departureId</text>
+   <text x="495" y="434" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Variable characters (10)</text>
+   <text x="495" y="445" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Variable characters (10)</text>
+   <defs>
+      <linearGradient id="Gradient6" x1="0%" x2="100%" y1="0%" y2="100%" gradientUnits="objectBoundingBox">
+         <stop offset="5%" stop-color="#ffffff"/>
+         <stop offset="95%" stop-color="#b2d6fc"/>
+      </linearGradient>
+   </defs>
+   <rect x="266" y="613" rx="6" ry="6" fill="url(#Gradient6)" width="198" height="53" stroke="#0080c0" stroke-width="1"/>
+   <text x="365" y="623" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-anchor="middle">user</text>
+   <text x="274" y="636" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">#</text>
+   <text x="274" y="647" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">o</text>
+   <text x="274" y="658" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">*</text>
+   <text x="287" y="636" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">userId</text>
+   <text x="287" y="647" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">password</text>
+   <text x="287" y="658" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">isAdmin</text>
+   <text x="335" y="636" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'" text-decoration="underline">Variable characters (10)</text>
+   <text x="335" y="647" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Variable characters (18)</text>
+   <text x="335" y="658" fill="#000000" font-size="10" font-family="'Arial Unicode MS','新宋体'">Integer</text>
+</svg>
