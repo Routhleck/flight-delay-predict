@@ -114,8 +114,11 @@ def doGetArriveWeather():
 @cross_origin(supports_credentials=True)
 def doJudgeAdmin():
     data = request.get_json()
+    print(data)
     id = data.get('username')
+    print(id)
     confirm = judgeAdmin(id)
+    print(confirm)
     return confirm
 
 

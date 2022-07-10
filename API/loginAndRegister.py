@@ -57,7 +57,7 @@ def judgeAdmin(idNum):
     for row in rs:
         isAdmin = str(row[0])
 
-    if isAdmin == 1:
+    if isAdmin == "1":
         return "true"
     else:
         return "false"

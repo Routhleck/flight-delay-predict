@@ -96,6 +96,9 @@
                      showmsg : '',
                      showemsg : '',
                 },
+                adminForm:{
+                     username : this.$route.query.username,
+                },
                 buttonShow : false,
                 count: 0,
                 thehint : "请选择出发机场",
@@ -140,9 +143,7 @@
              },
             checkadd(){
 
-                let name1 = JSON.parse(this.$route.query.user_name);
-                console.log(name1);
-                this.axios.post('',name1).then((resp)=>{
+                this.axios.post('http://localhost:5000/judgeAdmin',this.adminForm).then((resp)=>{
                     let data = resp.data;
                     if(data.toString()=="true"){
                      this.$router.push({path:'/Manager'})

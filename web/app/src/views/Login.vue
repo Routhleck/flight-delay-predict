@@ -84,7 +84,7 @@
                     type: 'success'
                 });
                 // this.$router.push({name: 'MAIN-INTER',params:{user_name:this.loginForm.username}})
-                this.$router.push({path: '/MAIN-INTER',query:{user_name:this.loginForm.username}})
+                this.$router.push({path: '/MAIN-INTER',query:{username:this.loginForm.username}})
                     }else{
                         this.$message.error('登录失败');
                     }
