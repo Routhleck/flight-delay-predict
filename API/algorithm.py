@@ -144,7 +144,15 @@ def delayPredict(hour):
         session.commit()
         session.close()
     print('延误预测完成')
-    return "true"
+    # 获取departureWeather表中的normal_prob, mild_prob, moderate_prob, serious_prob
+    session = Session()
+    sql = 'select normal_prob, mild_prob, moderate_prob, serious_prob from departureWeather'
+    rs = session.execute(sql).fetchall()
+    pred = []
+    for i in rs:
+        pred.append(i)
+    session.close()
+    return str(pred)
 
 # 获取出发天气
 def getDepartureWeather():
@@ -179,7 +187,7 @@ def getDepartureWeather():
     for i in rs:
         weatherList.append(i)
     session.close()
-    # 返回天气与延误信息二维列表，形式如：[date, avg_temp, max_temp, min_temp, prec, pressure, wind_direction, wind_speed, delayDeparture, delayArrive]
+    # 返回天气与延误信息二维列表，形式如：[avg_temp, max_temp, min_temp, prec, pressure, wind_direction, wind_speed, year, month, day]
     return str(weatherList[0:len(weatherList)-1][1:11])
 
 # 获取到达天气
@@ -220,5 +228,5 @@ def getArriveWeather():
     for i in rs:
         weatherList.append(i)
     session.close()
-    # 返回天气信息二维列表，形式如：[date, avg_temp, max_temp, min_temp, prec, pressure, wind_direction, wind_speed]
-    return str(weatherList[0:len(weatherList)-1][1:9])
+    # 返回天气信息二维列表，形式如：[avg_temp, max_temp, min_temp, prec, pressure, wind_direction, wind_speed, year, month, day]
+    return str(weatherList[0:len(weatherList)-1][1:11])
