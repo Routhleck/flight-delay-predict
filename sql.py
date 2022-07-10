@@ -10,7 +10,7 @@ def querySomething(engine, table, condition, conditionColumn, resultColumn):
 
 def queryAllthing(engine, table, resultColumn):
     with engine.connect() as con:
-        sql = 'select ' + str(resultColumn) + 'from ' + str(table)
+        sql = 'select ' + str(resultColumn) + ' from ' + str(table)
         rs = con.execute(sql)
         return rs
 

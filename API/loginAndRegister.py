@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 # 配置数据库
-from sql import querySomething
+from sql import querySomething, queryAllthing
 
 hostname = '8.141.236.100'
 port = '3306'
@@ -22,16 +22,16 @@ def login(idNum, password):
     truepassword = ''
     rs1 = querySomething(engine, 'user', idNum, "userId", "*")
     if rs1 is None:
-        return 'not exists'
+        return 'flase'
     else:
         rs2 = querySomething(engine, 'user', idNum, "userId", "password")
         for row in rs2:
              truepassword = str(row[0])
 
     if password == truepassword:
-        return 'success'
+        return 'true'
     else:
-        return 'error'
+        return 'false'
 
 
 # 注册接口
@@ -57,11 +57,19 @@ def judgeAdmin(idNum):
     for row in rs:
         isAdmin = str(row[0])
 
-    if isAdmin == "1":
+    if isAdmin == '1':
         return "true"
     else:
         return "false"
 
+# 人员查询
+def selectAllUser():
+    rs = queryAllthing(engine, 'user', 'userId')
+    allUser = []
+    for row in rs:
+        allUser.append(row[0])
 
+    print(allUser)
+    return allUser
 
 

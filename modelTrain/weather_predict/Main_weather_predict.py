@@ -88,7 +88,6 @@ def weather_predict_single(airportId, engine, session, isDeparture):
     for row in result:
         weatherId = row[0]
 
-
     airport_dict = {}
     airport_dict[airportId] = weatherId
     # 训练并保存模型并返回MAE
@@ -138,7 +137,6 @@ def weather_predict_single(airportId, engine, session, isDeparture):
             session.execute(sql)
             session.commit()
             session.close()
-
 
         print(time_now.year, '/', time_now.month, '/', time_now.day,
               ': 平均气温', round(preds[a][0], 2), '℃ ',
