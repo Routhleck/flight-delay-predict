@@ -14,7 +14,7 @@ from predict_test import evaluate_model
 def train_test(max_depth, learning_rate, objective, booster, n_jobs, min_child_weight, gamma, subsample, colsample_bytree):
     # 导入训练集
 
-    data_train = pd.read_csv('dataset/flight_final.csv', encoding= 'utf-8')
+    data_train = pd.read_csv('../dataset/flight_final.csv', encoding= 'utf-8')
     print('读取完成')
 
     # 删除缺失值NaN
@@ -37,7 +37,7 @@ def train_test(max_depth, learning_rate, objective, booster, n_jobs, min_child_w
 
 
     # 划分数据集
-    X_train, X_validation, y_train, y_validation = train_test_split(x, y, test_size=0.1, random_state=42)
+    X_train, X_validation, y_train, y_validation = train_test_split(x, y, test_size=0.02, random_state=42)
     print('划分完成')
 
     # 标准化处理
@@ -52,7 +52,7 @@ def train_test(max_depth, learning_rate, objective, booster, n_jobs, min_child_w
 
     xgb_model = xgb.XGBClassifier(max_depth=max_depth,
                                 learning_rate= learning_rate,
-                                n_estimators=1000,
+                                n_estimators=200,
                                 objective= objective,
                                 booster= booster,
                                 n_jobs= n_jobs,
@@ -89,7 +89,7 @@ def train_test(max_depth, learning_rate, objective, booster, n_jobs, min_child_w
     # data_pred_departure = data_pred_departure * ss_X.scale_[0] + ss_X.mean_[0]
 
     # 保存模型
-    joblib.dump(xgb_model, 'train/delayPredict_0710.pkl')
+    joblib.dump(xgb_model, '../train/delayPredict_test.pkl')
 
     # 评估模型
     ACC, RECALL, PREC, F1 = evaluate_model(y_validation, y_validation_pred)
