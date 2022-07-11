@@ -20,7 +20,7 @@ def hello_world():
     return 'hello,world'
 
 
-# 登陆
+# 登录
 @app.route('/login', methods=['post'])
 @cross_origin(supports_credentials=True)
 def doLogin():
