@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, request, jsonify
 
 from API.algorithm import setDepartureAirport, setArriveAirport, delayPredict, getDepartureWeather, getArriveWeather
@@ -20,13 +22,13 @@ def hello_world():
     return 'hello,world'
 
 
-# 登录
+# 登陆
 @app.route('/login', methods=['post'])
 @cross_origin(supports_credentials=True)
 def doLogin():
     print("前端发出请求")
     data = request.get_json()
-    id = data.get('username')
+    id = '\''+str(data.get('username'))+'\''
     password = data.get('password')
     print(id)
     print(password)
@@ -43,7 +45,7 @@ def doLogin():
 @cross_origin(supports_credentials=True)
 def dosignup():
     data = request.get_json()
-    id = data.get('username')
+    id = '\'' + str(data.get('username'))+ '\''
     password = data.get('password')
     print(id)
     print(password)
@@ -53,11 +55,11 @@ def dosignup():
 
 
 # 删除
-@app.route('/deleteuser')
+@app.route('/deleteuser', methods=['post'])
 @cross_origin(supports_credentials=True)
 def dodelete():
     data = request.get_json()
-    id = data.get('username')
+    id = '\'' + str(data.get('username'))+ '\''
     confirm = deleteUser(id)
     return confirm
 
@@ -123,7 +125,7 @@ def doGetArriveWeather():
 @cross_origin(supports_credentials=True)
 def doJudgeAdmin():
     data = request.get_json()
-    id = data.get('username')
+    id = '\'' + str(data.get('username'))+ '\''
     confirm = judgeAdmin(id)
     return confirm
 
@@ -133,7 +135,12 @@ def doJudgeAdmin():
 @cross_origin(supports_credentials=True)
 def listAllUser():
     rs = selectAllUser()
-    return str(rs)
+    id_dict = []
+    for i in rs:
+        id_dict.append({'username': i})
+    data = {'users': id_dict}
+    print(data)
+    return jsonify(data)
 
 
 if __name__ == '__main__':

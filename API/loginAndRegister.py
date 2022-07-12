@@ -17,7 +17,7 @@ engine = create_engine(dburl, echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# 登录接口
+# 登陆接口
 def login(idNum, password):
     truepassword = ''
     rs1 = querySomething(engine, 'user', idNum, "userId", "*")
@@ -29,7 +29,7 @@ def login(idNum, password):
              truepassword = str(row[0])
 
     if password == truepassword:
-        return 'true'
+        return 'success'
     else:
         return 'false'
 
