@@ -52,7 +52,7 @@ def train_test(max_depth, learning_rate, objective, booster, n_jobs, min_child_w
 
     xgb_model = xgb.XGBClassifier(max_depth=max_depth,
                                 learning_rate= learning_rate,
-                                n_estimators=200,
+                                n_estimators=800,
                                 objective= objective,
                                 booster= booster,
                                 n_jobs= n_jobs,
