@@ -11,7 +11,7 @@ import joblib
 import xgboost as xgb
 from predict_test import evaluate_model
 
-def train_test(max_depth, learning_rate, objective, booster, n_jobs, min_child_weight, gamma, subsample, colsample_bytree):
+def train_test(max_depth, learning_rate, objective, booster, n_jobs, min_child_weight, gamma, subsample, colsample_bytree, reg_alpha):
     # 导入训练集
 
     data_train = pd.read_csv('../dataset/flight_final.csv', encoding= 'utf-8')
@@ -59,7 +59,8 @@ def train_test(max_depth, learning_rate, objective, booster, n_jobs, min_child_w
                                 min_child_weight= min_child_weight,
                                 gamma= gamma,
                                 subsample= subsample,
-                                colsample_bytree= colsample_bytree
+                                colsample_bytree= colsample_bytree,
+                                reg_alpha= reg_alpha
                                 )
 
     # 使用cv函数确定n_estimators的数量
@@ -94,6 +95,8 @@ def train_test(max_depth, learning_rate, objective, booster, n_jobs, min_child_w
     # 评估模型
     ACC, RECALL, PREC, F1 = evaluate_model(y_validation, y_validation_pred)
     return ACC, RECALL, PREC, F1
+
+
 '''
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
@@ -119,3 +122,52 @@ feature_importances = [(feature, round(importance, 2)) for feature, importance i
 feature_importances = sorted(feature_importances, key=lambda x: x[1], reverse=True)
 '''
 
+def train_gridtest():
+    # 导入训练集
+
+    data_train = pd.read_csv('dataset/flight_final.csv', encoding= 'utf-8')
+    print('读取完成')
+
+    # 删除缺失值NaN
+    data_train.dropna(inplace=True)
+    # 为出发机场,到达机场,航班编号,年,月,日,时间 字符串转化为可训练的变量
+    data_train['出发机场'] = data_train['出发机场'].astype('category')
+    data_train['到达机场'] = data_train['到达机场'].astype('category')
+    data_train['航班编号'] = data_train['航班编号'].astype('category')
+
+    # 字典映射编码
+    data_train['出发机场'] = data_train['出发机场'].cat.codes
+    data_train['到达机场'] = data_train['到达机场'].cat.codes
+    data_train['航班编号'] = data_train['航班编号'].cat.codes
+
+    cols = ['出发机场','到达机场','航班编号','距离','平均温度','最高温度','最低温度','降水量','气压','风向','风速','年','月','日','时间']
+    x = data_train[cols].values
+    y = data_train[['延迟程度']].values
+
+    # 取5%作为训练验证集
+
+
+    # 划分数据集
+    X_train, X_validation, y_train, y_validation = train_test_split(x, y, test_size=0.02, random_state=42)
+    print('划分完成')
+
+    # 标准化处理
+    ss_X = preprocessing.StandardScaler()
+    X_train_scaled = ss_X.fit_transform(X_train)
+    # print(X_train_scaled)
+    X_validation_scaled = ss_X.transform(X_validation)
+
+
+    # gridsearch评估
+    param_test3 = {
+        'gamma': [i / 10.0 for i in range(0, 5)]
+    }
+    gsearch3 = GridSearchCV(estimator=xgb.XGBClassifier(learning_rate=0.5, n_estimators=100, max_depth = 9, 
+                                                    min_child_weight = 8, gamma = 0, subsample = 0.8, 
+                                                    colsample_bytree = 0.8, objective = 'multi:softmax', 
+                                                    n_jobs = -1, seed = 42),param_grid=param_test3, scoring='roc_auc', cv=5, n_jobs=-1)
+    gsearch3.fit(X_train_scaled, y_train)
+
+    print(gsearch3.gird_scores_)
+
+    print('最优参数：', gsearch3.best_params_, '最优roc_auc值：', gsearch3.best_score_)
