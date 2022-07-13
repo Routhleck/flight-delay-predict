@@ -73,7 +73,7 @@ def setDepartureAirport(departureAirport):
     # 将df insert到数据库
     for i in range(len(df)):
         sql = 'insert into departureWeather(weatherId, avg_temp, max_temp, min_temp, prec, pressure, wind_dir, wind_sp, year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob) values({},{},{},{},{},{},{},{},{},{},{},{},{},{},{})'.format(
-            departureAirport, df['Ave_T'][i], df['Max_t'][i], df['Min_t'][i], df['Prec'][i], df['SLpress'][i], df['Winddir'][i], df['Windsp'][i], str(df['Time'][i]).split('/')[i], str(df['Time'][i]).split('/')[1], str(df['Time'][i]).split('/')[0], 0, 0, 0, 0)
+            departureAirport, df['Ave_T'][i], df['Max_t'][i], df['Min_t'][i], df['Prec'][i], df['SLpress'][i], df['Winddir'][i], df['Windsp'][i], str(df['Time'][i]).split('/')[i], str(df['Time'][i]).split('/')[1], 2022, 0, 0, 0, 0)
 
     session.execute(sql)
     session.commit()
@@ -128,11 +128,11 @@ def setArriveAirport(arriveAirport):
     # 将df insert到数据库
     for i in range(len(df)):
         sql = 'insert into departureWeather(weatherId, avg_temp, max_temp, min_temp, prec, pressure, wind_dir, wind_sp, year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob) values({},{},{},{},{},{},{},{},{},{},{},{},{},{},{})'.format(
-            departureAirport, df['Ave_T'][i], df['Max_t'][i], df['Min_t'][i], df['Prec'][i], df['SLpress'][i], df['Winddir'][i], df['Windsp'][i], str(df['Time'][i]).split('/')[i], str(df['Time'][i]).split('/')[1], str(df['Time'][i]).split('/')[0], 0, 0, 0, 0)
+            departureAirport, df['Ave_T'][i], df['Max_t'][i], df['Min_t'][i], df['Prec'][i], df['SLpress'][i], df['Winddir'][i], df['Windsp'][i], str(df['Time'][i]).split('/')[i], str(df['Time'][i]).split('/')[1], 2022, 0, 0, 0, 0)
 
     session.execute(sql)
     session.commit()
-    
+
     sql = 'select * from arriveWeather'
     rs = session.execute(sql).fetchall()
     pred = []

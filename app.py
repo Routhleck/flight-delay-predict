@@ -88,7 +88,15 @@ def doSetDepartureAirport():
         min_temp.append({'min_temp': str(i[3])})
         prec.append({'prec': str(i[4])})
         pressure.append({'pressure': str(i[5])})
-        wind_dir.append({'wind_dir': str(i[6])})
+        # 判断风向
+        if i[6] < 90:
+            wind_dir.append({'wind_dir': '东北风'})
+        elif i[6] < 180:
+            wind_dir.append({'wind_dir': '东南风'})
+        elif i[6] < 270:
+            wind_dir.append({'wind_dir': '西南风'})
+        elif i[6] <= 360:
+            wind_dir.append({'wind_dir': '西北风'})
         wind_speed.append({'wind_speed': str(i[7])})
     data_return = {'data': datalist, 'avg_temp': avg_temp, 'max_temp': max_temp, 'min_temp': min_temp, 'prec': prec,
                    'pressure': pressure, 'wind_dir': wind_dir, 'wind_speed': wind_speed}
@@ -125,7 +133,14 @@ def doSetArriveAirport():
         min_temp.append({'min_temp': str(i[3])})
         prec.append({'prec': str(i[4])})
         pressure.append({'pressure': str(i[5])})
-        wind_dir.append({'wind_dir': str(i[6])})
+        if i[6] < 90:
+            wind_dir.append({'wind_dir': '东北风'})
+        elif i[6] < 180:
+            wind_dir.append({'wind_dir': '东南风'})
+        elif i[6] < 270:
+            wind_dir.append({'wind_dir': '西南风'})
+        elif i[6] <= 360:
+            wind_dir.append({'wind_dir': '西北风'})
         wind_speed.append({'wind_speed': str(i[7])})
     data_return = {'data': datalist, 'avg_temp': avg_temp, 'max_temp': max_temp, 'min_temp': min_temp, 'prec': prec,
                    'pressure': pressure, 'wind_dir': wind_dir, 'wind_speed': wind_speed}
