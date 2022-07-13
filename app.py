@@ -151,13 +151,24 @@ def doDelayPredict():
     mild_prob = []
     moderate_prob = []
     serious_prob = []
+    max_prob = []
     for i in confirm:
-        datalist.append({'date': str(str(i[0]) + '/' + str(i[1]) + '/' + str(i[2]))})
-        normal_prob.append({'normal_prob':str(i[3])})
-        mild_prob.append({'mild_prob':str(i[4])})
-        moderate_prob.append({'moderate_prob':str(i[5])})
-        serious_prob.append({'serious_prob':str(i[6])})
-    data_return = {'date': datalist, 'normal_prob': normal_prob, 'mild_prob': mild_prob, 'moderate_prob': moderate_prob, 'serious_prob': serious_prob}
+        datalist.append({'date' : str(str(i[0]) + '/' + str(i[1]) + '/' + str(i[2]))})
+        normal_prob.append({'normal_prob' : str(i[3])})
+        mild_prob.append({'mild_prob' : str(i[4])})
+        moderate_prob.append({'moderate_prob' : str(i[5])})
+        serious_prob.append({'serious_prob' : str(i[6])})
+        # 比较最终的概率最大的
+        max_prob_value = max(i[3], i[4], i[5], i[6])
+        if normal_prob == max_prob_value:
+            max_prob.append({'max_prob' : '正常延误'})
+        elif mild_prob == max_prob_value:
+            max_prob.append({'max_prob' : '轻度延误'})
+        elif moderate_prob == max_prob_value:
+            max_prob.append({'max_prob' : '中度延误'})
+        elif serious_prob == max_prob_value:
+            max_prob.append({'max_prob' : '严重延误'})
+    data_return = {'date': datalist, 'normal_prob': normal_prob, 'mild_prob': mild_prob, 'moderate_prob': moderate_prob, 'serious_prob': serious_prob, 'max_prob': max_prob}
     return jsonify(data_return)
 
 
