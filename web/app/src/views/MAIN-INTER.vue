@@ -49,17 +49,23 @@
         <div class="chartBox">
     <div id="mapChart" ></div>
        </div>
+        <el-divider content-position="center" style="position: relative;"></el-divider>
+        <div class="fenge">机场设置</div>
+        <el-divider content-position="center" style="position: relative;"></el-divider>
+        <el-container style="position: relative;">
+        <el-aside>
+            <div style="height: 20px"></div>
          <div class = "gl">
-          <el-tag style="width: 95px">提示:</el-tag>
-          <el-tag style="width: 95px" v-text="thehint"></el-tag>
+          <el-tag style="width: 110px; height: 50px">提示:</el-tag>
+          <el-tag style="width: 110px; height: 50px" v-text="thehint"></el-tag>
       </div>
        <div class = "gl">
-   <el-tag style="width: 95px">出发机场</el-tag>
-           <el-tag class = "startAirport" style="width: 95px" v-text="msg"></el-tag>
+   <el-tag style="width: 110px; height: 50px">出发机场</el-tag>
+           <el-tag class = "startAirport" style="width:110px; height: 50px" v-text="msg"></el-tag>
       </div>
       <div class = "gl">
-   <el-tag style="width: 95px">目的机场</el-tag>
-           <el-tag class = "endAirport" style="width: 95px" v-text="emsg"></el-tag>
+   <el-tag style="width: 110px; height: 50px">目的机场</el-tag>
+           <el-tag class = "endAirport" style="width: 110px; height: 50px" v-text="emsg"></el-tag>
       </div>
       <div class = "gl">
           <el-time-picker
@@ -74,25 +80,82 @@
           <el-button round @click="buttonShow && sure()" style="position: relative">确定</el-button>
           <el-button round style="position: relative" @click.native="toCancel()">取消</el-button>
           </div>
-      <<div>
+        </el-aside>
+        <el-main class="getmain">
+            <el-table
+                    :data="tableData"
+                    style="width: 100%"
+                    max-height="250">
+                <el-table-column
+                        fixed
+                        prop="date"
+                        label="出发机场编号"
+                        width="250">
+                </el-table-column>
+                <el-table-column
+                        prop="name"
+                        label="出发机场"
+                        width="250">
+                </el-table-column>
+                <el-table-column
+                        prop="province"
+                        label="目的机场编号"
+                        width="250">
+                </el-table-column>
+                <el-table-column
+                        prop="city"
+                        label="目的机场"
+                        width="250">
+                </el-table-column>
+                <el-table-column
+                        prop="address"
+                        label="出发时间"
+                        width="250">
+                </el-table-column>
+            </el-table>
+        </el-main>
+        </el-container>
+        <el-divider content-position="center" style="position: relative;"></el-divider>
+        <div class="fenge">预测信息</div>
+        <el-divider content-position="center" style="position: relative;"></el-divider>
+      <div>
       <el-collapse v-model="activeNames" @change="handleChange" class = "ec">
           <el-collapse-item title="出发机场天气预测" name="1">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+              <el-table :data="departureList" border stripe style="position:relative">
+                  <el-table-column type="index"></el-table-column>
+                  <el-tableColumn label="日期" prop="date"></el-tableColumn>
+                  <el-tableColumn label="平均气温/°C" prop="avg_temp"></el-tableColumn>
+                  <el-tableColumn label="最高气温/°C" prop="max_temp"></el-tableColumn>
+                  <el-tableColumn label="最低气温/°C" prop="min_temp"></el-tableColumn>
+                  <el-tableColumn label="降水量/mm" prop="prec"></el-tableColumn>
+                  <el-tableColumn label="气压/kpa" prop="pressure"></el-tableColumn>
+                  <el-tableColumn label="风向" prop="wind_dir"></el-tableColumn>
+                  <el-tableColumn label="风速/ km/h" prop="wind_speed"></el-tableColumn>
+              </el-table>
           </el-collapse-item>
           <el-collapse-item title="到达机场天气预测" name="2">
-              <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
-              <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+              <el-table :data="arriveList" border stripe style="position:relative">
+                  <el-table-column type="index"></el-table-column>
+                  <el-tableColumn label="日期" prop="date"></el-tableColumn>
+                  <el-tableColumn label="平均气温/°C" prop="avg_temp"></el-tableColumn>
+                  <el-tableColumn label="最高气温/°C" prop="max_temp"></el-tableColumn>
+                  <el-tableColumn label="最低气温/°C" prop="min_temp"></el-tableColumn>
+                  <el-tableColumn label="降水量/mm" prop="prec"></el-tableColumn>
+                  <el-tableColumn label="气压/kpa" prop="pressure"></el-tableColumn>
+                  <el-tableColumn label="风向" prop="wind_dir"></el-tableColumn>
+                  <el-tableColumn label="风速/ km/h" prop="wind_speed"></el-tableColumn>
+              </el-table>
           </el-collapse-item>
           <el-collapse-item title="延误预测" name="3">
-              <div>简化流程：设计简洁直观的操作流程；</div>
-              <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
-              <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+              <el-table :data="totalList"  border stripe style="position:relative">
+                  <el-table-column type="index"></el-table-column>
+                  <el-tableColumn label="日期" prop="date"></el-tableColumn>
+                  <el-tableColumn label="正常延误概率" prop="normal_prob"></el-tableColumn>
+                  <el-tableColumn label="轻度延误概率" prop="mild_prob"></el-tableColumn>
+                  <el-tableColumn label="中度延误概率" prop="moderate_prob"></el-tableColumn>
+                  <el-tableColumn label="重度延误概率" prop="serious_prob"></el-tableColumn>
+                  <el-tableColumn label="预测结果" prop="max_prob"></el-tableColumn>
+              </el-table>
           </el-collapse-item>
       </el-collapse>
   </div>
@@ -130,6 +193,9 @@
                 msg : "请选择",
                 emsg : "请选择",
                 activeNames: ['0'],
+                departureList : [],
+                arriveList: [],
+                totalList :[],
 
             }
 
@@ -139,6 +205,90 @@
             this.getMapChart();
           },
         methods: {
+            openMsgHint(msg,data1) {
+                this.$confirm('是否选择'+msg+'为出发机场', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$message({
+                        type: 'success',
+                        message: '选择成功!',
+                    });
+                    this.msg = msg;
+                    this.mainForm.showmsg=this.getCode(data1,msg);
+                    console.log(this.getCode(data1,msg));
+                    this.thehint =  "请选择目的机场" ;
+                    console.log('success');
+                     this.axios.post('http://localhost:5000/setDepartureAirport',this.mainForm).then((resp)=>{
+                     let data = resp.data;
+                        let that = this;
+                    let tempList = []
+                    for(let i = 0;i<7;i++){
+                         tempList.push({
+                             date:resp.data.date[i].date,
+                             avg_temp:resp.data.avg_temp[i].avg_temp,
+                             max_temp:resp.data.max_temp[i].max_temp,
+                             min_temp: resp.data.min_temp[i].min_temp,
+                             prec: resp.data.prec[i].prec,
+                             pressure: resp.data.pressure[i].pressure/10,
+                             wind_dir: resp.data.wind_dir[i].wind_dir,
+                             wind_speed: resp.data.wind_speed[i].wind_speed,
+                         });
+                    }
+                    console.log(tempList);
+                    that.departureList = tempList;
+
+                })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消选择'
+                    });
+                });
+            },
+            openEMsgHint(msg,data1) {
+                this.$confirm('是否选择'+msg+'为目的机场', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$message({
+                        type: 'success',
+                        message: '选择成功!',
+                    });
+                    this.emsg = msg;
+                    this.mainForm.showemsg=this.getCode(data1,msg);
+                    console.log(this.getCode(data1,msg));
+                    this.thehint =  "请选择时间";
+                    console.log('success');
+                    this.axios.post('http://localhost:5000/setArriveAirport',this.mainForm).then((resp)=>{
+                     let data = resp.data;
+                        let that = this;
+                    let tempList = []
+                    for(let i = 0;i<7;i++){
+                         tempList.push({
+                             date:resp.data.date[i].date,
+                             avg_temp:resp.data.avg_temp[i].avg_temp,
+                             max_temp:resp.data.max_temp[i].max_temp,
+                             min_temp: resp.data.min_temp[i].min_temp,
+                             prec: resp.data.prec[i].prec,
+                             pressure: resp.data.pressure[i].pressure/10,
+                             wind_dir: resp.data.wind_dir[i].wind_dir,
+                             wind_speed: resp.data.wind_speed[i].wind_speed,
+                         });
+                    }
+                    console.log(tempList);
+                    that.arriveList = tempList;
+
+                })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消选择'
+                    });
+                });
+            },
             handleChange(val) {
                 console.log(val);
             },
@@ -161,31 +311,46 @@
                 alert("确定");
 
 
-                this.axios.post('http://localhost:5000/setDepartureAirport',this.mainForm).then((resp)=>{
-                    let data = resp.data;
-                    console.log(data);
-                    // for( let i =0; i<15; i++){
-                    //     console.log(data1[0][i].toString());
-                    // }
-                    if(data.toString()!= null){
-                        this.axios.post('http://localhost:5000/setArriveAirport',this.mainForm).then((resp)=>{
-                            let data = resp.data;
-                            if(data.toString()=="true"){
-                                this.axios.post('http://localhost:5000/delayPredict',this.mainForm).then((resp)=>{
-                                    let data = resp.data;
-                                    console.log(data);
-                                })
-                            }
-                            this.$message({
-                                message: '选择成功',
-                                type: 'success'
-                            });
-                        })
+                this.axios.post('http://localhost:5000/delayPredict',this.mainForm).then((resp)=>{
+                     let data = resp.data;
+                        let that = this;
+
+                     //that.mildList = resp.data.mild_prob;
+                    let tempList = []
+                    for(let i = 0;i<7;i++){
+                         tempList.push({
+                             date:resp.data.date[i].date,
+                             normal_prob:resp.data.normal_prob[i].normal_prob,
+                             mild_prob:resp.data.mild_prob[i].mild_prob,
+                             moderate_prob: resp.data.moderate_prob[i].moderate_prob,
+                             serious_prob: resp.data.serious_prob[i].serious_prob,
+                             max_prob: resp.data.max_prob[i].max_prob
+                         });
                     }
+                    console.log(tempList);
+                    that.totalList = tempList;
+                     //console.log(resp.data.normal_prob);
+                    // // for( let i =0; i<15; i++){
+                    // //     console.log(data1[0][i].toString());
+                    // // }
+                    // if(data.toString()!= null){
+                    //     this.axios.post('http://localhost:5000/setArriveAirport',this.mainForm).then((resp)=>{
+                    //         let data = resp.data;
+                    //         if(data.toString()=="true"){
+                    //             this.axios.post('http://localhost:5000/delayPredict',this.mainForm).then((resp)=>{
+                    //                 let data = resp.data;
+                    //                 console.log(data);
+                    //             })
+                    //         }
+                    //         this.$message({
+                    //             message: '选择成功',
+                    //             type: 'success'
+                    //         });
+                    //     })
+                    // }
                 })
              },
             checkadd(){
-
                 this.axios.post('http://localhost:5000/judgeAdmin',this.adminForm).then((resp)=>{
                     let data = resp.data;
                     if(data.toString()=="true"){
@@ -210,7 +375,7 @@
                     tooltip: {
                       show: false,
                     },
-                    backgroundColor: "#6495ED",
+                    backgroundColor: "rgba(0,0,0,0)",
                     geo: {
                       map: "china",
                       roam: false, // 一定要关闭拖拽
@@ -371,17 +536,10 @@
                     if(params.seriesType == "effectScatter"){
 
                         if(this.thehint == "请选择出发机场"){
-                        this.msg = params.name;
-                        this.mainForm.showmsg=this.getCode(data1,params.name);
-                        console.log(this.getCode(data1,params.name));
-                         this.thehint =  "请选择目的机场" ;
+                        this.openMsgHint(params.name,data1)
                         }
                         else if(this.thehint == "请选择目的机场"){
-
-                        this.emsg = params.name;
-                        this.mainForm.showemsg=this.getCode(data1,params.name);
-                        console.log(this.getCode(data1,params.name));
-                        this.thehint =  "请选择时间";
+                        this.openEMsgHint(params.name,data1)
                         }
                         else if(this.thehint == "请点击确认"){
                             alert("请点击确定或取消");
@@ -531,6 +689,15 @@
 </script>
 
 <style scoped>
+    .fenge{
+        text-align: center;
+        font-size: 40px;
+        background: #409EFF;
+        color: #fff;
+    }
+    .getmain{
+        height: 300px;
+    }
 
     .chartBox {
   width: 100%;

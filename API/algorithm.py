@@ -56,7 +56,7 @@ def setDepartureAirport(departureAirport):
     today = str(today) + '/2016'
 
     # 读取weather/对应的机场.csv文件
-    df = pd.read_csv('weather/' + departureAirport + '.csv')
+    df = pd.read_csv('API/weather/' + departureAirport + '.csv')
     # 去除空行
     df = df.dropna(axis=0, how='any')
 
@@ -72,11 +72,12 @@ def setDepartureAirport(departureAirport):
 
     # 将df insert到数据库
     for i in range(len(df)):
-        sql = 'insert into departureWeather(weatherId, avg_temp, max_temp, min_temp, prec, pressure, wind_dir, wind_sp, year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob) values({},{},{},{},{},{},{},{},{},{},{},{},{},{},{})'.format(
-            departureAirport, df['Ave_T'][i], df['Max_t'][i], df['Min_t'][i], df['Prec'][i], df['SLpress'][i], df['Winddir'][i], df['Windsp'][i], str(df['Time'][i]).split('/')[i], str(df['Time'][i]).split('/')[1], 2022, 0, 0, 0, 0)
-
-    session.execute(sql)
-    session.commit()
+        sql = 'insert into departureWeather(weatherId, avg_temp, max_temp, min_temp, prec, pressure, wind_dir, wind_sp, year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob) values(\'{}\',{},{},{},{},{},{},{},{},{},{},{},{},{},{})'.format(
+            departureAirport, df['Ave_t'].values[i], df['Max_t'].values[i], df['Min_t'].values[i], df['Prec'].values[i],
+            df['SLpress'].values[i], df['Winddir'].values[i], df['Windsp'].values[i], 2022,
+            str(df['Time'].values[i]).split('/')[1], str(df['Time'].values[i]).split('/')[0], 0, 0, 0, 0)
+        session.execute(sql)
+        session.commit()
 
     sql = 'select * from departureWeather'
     rs = session.execute(sql).fetchall()
@@ -111,28 +112,30 @@ def setArriveAirport(arriveAirport):
     today = str(today) + '/2016'
 
     # 读取weather/对应的机场.csv文件
-    df = pd.read_csv('weather/' + departureAirport + '.csv')
+    df = pd.read_csv('API/weather/' + arriveAirport + '.csv')
     # 去除空行
     df = df.dropna(axis=0, how='any')
-
+    print(today)
     # 找到df的Time列中为today的行数
     index = df[df['Time'] == today].index.tolist()
     # 取出该行以及下6行的数据
     df = df.iloc[index[0]:index[0] + 7, :]
-
+    print(df['Time'].values[0])
     # 删除原有的departureWeather表中的所有数据
-    sql = 'delete from departureWeather'
+    sql = 'delete from arriveWeather'
     session.execute(sql)
     session.commit()
 
     # 将df insert到数据库
+    print(len(df))
     for i in range(len(df)):
-        sql = 'insert into departureWeather(weatherId, avg_temp, max_temp, min_temp, prec, pressure, wind_dir, wind_sp, year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob) values({},{},{},{},{},{},{},{},{},{},{},{},{},{},{})'.format(
-            departureAirport, df['Ave_T'][i], df['Max_t'][i], df['Min_t'][i], df['Prec'][i], df['SLpress'][i], df['Winddir'][i], df['Windsp'][i], str(df['Time'][i]).split('/')[i], str(df['Time'][i]).split('/')[1], 2022, 0, 0, 0, 0)
-
-    session.execute(sql)
-    session.commit()
-
+        sql = 'insert into arriveWeather(weatherId, avg_temp, max_temp, min_temp, prec, pressure, wind_dir, wind_sp, year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob) values(\'{}\',{},{},{},{},{},{},{},{},{},{},{},{},{},{})'.format(
+            arriveAirport, df['Ave_t'].values[i], df['Max_t'].values[i], df['Min_t'].values[i], df['Prec'].values[i],
+            df['SLpress'].values[i], df['Winddir'].values[i], df['Windsp'].values[i], 2022,
+            str(df['Time'].values[i]).split('/')[1], str(df['Time'].values[i]).split('/')[0], 0, 0, 0, 0)
+        session.execute(sql)
+        session.commit()
+    
     sql = 'select * from arriveWeather'
     rs = session.execute(sql).fetchall()
     pred = []
@@ -172,7 +175,7 @@ def delayPredict(hour):
     length = geoDistance(departure_longitude, departure_latitude, arrive_longitude, arrive_latitude)
 
     # 获取departureWeather表中的天气
-    sql = 'select * from departureWeather where weatherId = {}'.format(weatherId)
+    sql = 'select * from departureWeather where weatherId = \'{}\''.format(departureAirport)
     rs = session.execute(sql).fetchall()
     weatherList = []
     for i in rs:
@@ -191,13 +194,13 @@ def delayPredict(hour):
         session.commit()
     print('延误预测完成')
     # 获取departureWeather表中的normal_prob, mild_prob, moderate_prob, serious_prob
-    sql = 'select normal_prob, mild_prob, moderate_prob, serious_prob from departureWeather'
+    sql = 'select year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob from departureWeather'
     rs = session.execute(sql).fetchall()
     pred = []
     for i in rs:
         pred.append(i)
     session.close()
-    return str(pred)
+    return pred
 
 # 获取出发天气
 def getDepartureWeather():

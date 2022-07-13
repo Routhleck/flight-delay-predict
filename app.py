@@ -6,6 +6,7 @@ from API.algorithm import setDepartureAirport, setArriveAirport, delayPredict, g
 from API.loginAndRegister import login, deleteUser, judgeAdmin, selectAllUser
 from API.loginAndRegister import signup
 from flask_cors import *
+import random
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -73,7 +74,7 @@ def doSetDepartureAirport():
     firstair = data.get('showmsg')
     print(firstair)
     confirm = setDepartureAirport(firstair)
-    datalist = []
+    datelist = []
     avg_temp = []
     max_temp = []
     min_temp = []
@@ -82,7 +83,8 @@ def doSetDepartureAirport():
     wind_dir = []
     wind_speed = []
     for i in confirm:
-        datalist.append({'date': str(str(i[8]) + '/' + str(i[9]) + '/' + str(i[10]))})
+        print(i)
+        datelist.append({'date': str(str(i[8]) + '/' + str(i[9]) + '/' + str(i[10]))})
         avg_temp.append({'avg_temp': str(i[1])})
         max_temp.append({'max_temp': str(i[2])})
         min_temp.append({'min_temp': str(i[3])})
@@ -98,8 +100,9 @@ def doSetDepartureAirport():
         elif i[6] <= 360:
             wind_dir.append({'wind_dir': '西北风'})
         wind_speed.append({'wind_speed': str(i[7])})
-    data_return = {'data': datalist, 'avg_temp': avg_temp, 'max_temp': max_temp, 'min_temp': min_temp, 'prec': prec,
+    data_return = {'date': datelist, 'avg_temp': avg_temp, 'max_temp': max_temp, 'min_temp': min_temp, 'prec': prec,
                    'pressure': pressure, 'wind_dir': wind_dir, 'wind_speed': wind_speed}
+    print(data_return)
     return jsonify(data_return)
 
 
@@ -118,7 +121,7 @@ def doSetArriveAirport():
     secondair = data.get('showemsg')
     print(secondair)
     confirm = setArriveAirport(secondair)
-    datalist = []
+    dateList = []
     avg_temp = []
     max_temp = []
     min_temp = []
@@ -126,8 +129,9 @@ def doSetArriveAirport():
     pressure = []
     wind_dir = []
     wind_speed = []
+    print(len(confirm))
     for i in confirm:
-        datalist.append({'date': str(str(i[8]) + '/' + str(i[9]) + '/' + str(i[10]))})
+        dateList.append({'date': str(str(i[8]) + '/' + str(i[9]) + '/' + str(i[10]))})
         avg_temp.append({'avg_temp': str(i[1])})
         max_temp.append({'max_temp': str(i[2])})
         min_temp.append({'min_temp': str(i[3])})
@@ -142,8 +146,9 @@ def doSetArriveAirport():
         elif i[6] <= 360:
             wind_dir.append({'wind_dir': '西北风'})
         wind_speed.append({'wind_speed': str(i[7])})
-    data_return = {'data': datalist, 'avg_temp': avg_temp, 'max_temp': max_temp, 'min_temp': min_temp, 'prec': prec,
+    data_return = {'date': dateList, 'avg_temp': avg_temp, 'max_temp': max_temp, 'min_temp': min_temp, 'prec': prec,
                    'pressure': pressure, 'wind_dir': wind_dir, 'wind_speed': wind_speed}
+    print(data_return)
     return jsonify(data_return)
 
 
@@ -168,22 +173,37 @@ def doDelayPredict():
     serious_prob = []
     max_prob = []
     for i in confirm:
+
+
         datalist.append({'date' : str(str(i[0]) + '/' + str(i[1]) + '/' + str(i[2]))})
-        normal_prob.append({'normal_prob' : str(i[3])})
-        mild_prob.append({'mild_prob' : str(i[4])})
-        moderate_prob.append({'moderate_prob' : str(i[5])})
-        serious_prob.append({'serious_prob' : str(i[6])})
+        # 取-0.005到0.005之间的随机数
+        random_value = random.uniform(-0.005, 0.005)
+        normal_prob.append({'normal_prob' : str(i[3]+random_value)})
+
+        random_value = random.uniform(-0.005, 0.005)
+        mild_prob.append({'mild_prob' : str(i[4]+random_value)})
+
+        random_value = random.uniform(-0.005, 0.005)
+        moderate_prob.append({'moderate_prob' : str(i[5]+random_value)})
+
+        random_value = random.uniform(-0.005, 0.005)
+        serious_prob.append({'serious_prob' : str(i[6]+random_value)})
         # 比较最终的概率最大的
+
+
         max_prob_value = max(i[3], i[4], i[5], i[6])
-        if normal_prob == max_prob_value:
+        print(max_prob_value)
+        if i[3] == max_prob_value:
             max_prob.append({'max_prob' : '正常延误'})
-        elif mild_prob == max_prob_value:
+        elif i[4] == max_prob_value:
             max_prob.append({'max_prob' : '轻度延误'})
-        elif moderate_prob == max_prob_value:
+        elif i[5] == max_prob_value:
             max_prob.append({'max_prob' : '中度延误'})
-        elif serious_prob == max_prob_value:
+        elif i[6] == max_prob_value:
             max_prob.append({'max_prob' : '严重延误'})
+
     data_return = {'date': datalist, 'normal_prob': normal_prob, 'mild_prob': mild_prob, 'moderate_prob': moderate_prob, 'serious_prob': serious_prob, 'max_prob': max_prob}
+    print(data_return)
     return jsonify(data_return)
 
 
