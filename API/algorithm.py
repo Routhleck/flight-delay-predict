@@ -52,6 +52,7 @@ def setDepartureAirport(departureAirport):
 # 选择到达机场
 def setArriveAirport(arriveAirport):
 
+
     # 获取selectAirport表中departureId的第一行
     sql = 'select departureId from selectAirport limit 1'
     departureAirport = session.execute(sql).fetchone()[0]

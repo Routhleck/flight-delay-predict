@@ -110,9 +110,15 @@ def weather_predict_single(airportId, engine, session, isDeparture):
     all_pressure = []
     all_wind = []
     all_windSpeed = []
-    sql = "DELETE FROM departureWeather"
-    session.execute(sql)
-    session.commit()
+    if isDeparture:
+        sql = "DELETE FROM departureWeather"
+        session.execute(sql)
+        session.commit()
+    else:
+        sql = "DELETE FROM arrivalWeather"
+        session.execute(sql)
+        session.commit()
+    
     for a in range(1, 8):
         today = DT.datetime.now()
         time_now = (today + DT.timedelta(days=a)).strftime('%Y-%m-%d')
