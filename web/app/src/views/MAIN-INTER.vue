@@ -27,29 +27,6 @@
   </el-dropdown-menu>
 </el-dropdown>
       </div>
-      <div class = "gl">
-          <el-tag style="width: 95px">提示:</el-tag>
-          <el-tag style="width: 95px" v-text="thehint"></el-tag>
-      </div>
-       <div class = "gl">
-   <el-tag style="width: 95px">出发机场</el-tag>
-           <el-tag class = "startAirport" style="width: 95px" v-text="msg"></el-tag>
-      </div>
-      <div class = "gl">
-   <el-tag style="width: 95px">目的机场</el-tag>
-           <el-tag class = "endAirport" style="width: 95px" v-text="emsg"></el-tag>
-      </div>
-      <div class = "gl">
-          <el-button round @click="buttonShow && sure()" style="position: relative">确定</el-button>
-          <el-button round style="position: relative" @click.native="toCancel()">取消</el-button>
-          </div>
-      <div>
-      <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto; color: #fff">
-    <li v-for="i in count" class="infinite-list-item">{{ i }}</li>
-     </ul>
-      </div>
-
-
   </el-aside>
   <el-container>
     <el-header class="mainHead">
@@ -72,6 +49,53 @@
         <div class="chartBox">
     <div id="mapChart" ></div>
        </div>
+         <div class = "gl">
+          <el-tag style="width: 95px">提示:</el-tag>
+          <el-tag style="width: 95px" v-text="thehint"></el-tag>
+      </div>
+       <div class = "gl">
+   <el-tag style="width: 95px">出发机场</el-tag>
+           <el-tag class = "startAirport" style="width: 95px" v-text="msg"></el-tag>
+      </div>
+      <div class = "gl">
+   <el-tag style="width: 95px">目的机场</el-tag>
+           <el-tag class = "endAirport" style="width: 95px" v-text="emsg"></el-tag>
+      </div>
+      <div class = "gl">
+          <el-time-picker
+                  v-model="mainForm.value1"
+                  class="time_select"
+                  placeholder="选择时间"
+                  @change="timeSelected"
+                  value-format="HH:mm" format="HH:mm">
+          </el-time-picker>
+      </div>
+      <div class = "gl">
+          <el-button round @click="buttonShow && sure()" style="position: relative">确定</el-button>
+          <el-button round style="position: relative" @click.native="toCancel()">取消</el-button>
+          </div>
+      <<div>
+      <el-collapse v-model="activeNames" @change="handleChange" class = "ec">
+          <el-collapse-item title="出发机场天气预测" name="1">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+          </el-collapse-item>
+          <el-collapse-item title="到达机场天气预测" name="2">
+              <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+              <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+          </el-collapse-item>
+          <el-collapse-item title="延误预测" name="3">
+              <div>简化流程：设计简洁直观的操作流程；</div>
+              <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+              <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+          </el-collapse-item>
+      </el-collapse>
+  </div>
     </el-main>
       <el-footer class="mainFoot">
           <div class="kaifa">国寄纵队小组开发出品</div>
@@ -95,6 +119,7 @@
                 mainForm: {
                      showmsg : '',
                      showemsg : '',
+                     value1: '',
                 },
                 adminForm:{
                      username : this.$route.query.username,
@@ -104,6 +129,8 @@
                 thehint : "请选择出发机场",
                 msg : "请选择",
                 emsg : "请选择",
+                activeNames: ['0'],
+
             }
 
         },
@@ -112,10 +139,16 @@
             this.getMapChart();
           },
         methods: {
-            load () {
-                if(this.count<6)
-                this.count += 1
-             },
+            handleChange(val) {
+                console.log(val);
+            },
+            timeSelected(){
+                alert("change");
+                if(this.msg!= "请选择" && this.emsg!="请选择"){
+                    this.thehint = "请点击确认";
+                    this.buttonShow = true;
+                }
+            },
             toCancel() {
                 alert("取消");
                 this.count= 0;
@@ -130,9 +163,19 @@
 
                 this.axios.post('http://localhost:5000/setDepartureAirport',this.mainForm).then((resp)=>{
                     let data = resp.data;
-                    if(data.toString()=="true"){
+                    console.log(data);
+                    // for( let i =0; i<15; i++){
+                    //     console.log(data1[0][i].toString());
+                    // }
+                    if(data.toString()!= null){
                         this.axios.post('http://localhost:5000/setArriveAirport',this.mainForm).then((resp)=>{
                             let data = resp.data;
+                            if(data.toString()=="true"){
+                                this.axios.post('http://localhost:5000/delayPredict',this.mainForm).then((resp)=>{
+                                    let data = resp.data;
+                                    console.log(data);
+                                })
+                            }
                             this.$message({
                                 message: '选择成功',
                                 type: 'success'
@@ -338,8 +381,7 @@
                         this.emsg = params.name;
                         this.mainForm.showemsg=this.getCode(data1,params.name);
                         console.log(this.getCode(data1,params.name));
-                        this.buttonShow = true;
-                            this.thehint =  "请点击确认";
+                        this.thehint =  "请选择时间";
                         }
                         else if(this.thehint == "请点击确认"){
                             alert("请点击确定或取消");
@@ -557,6 +599,14 @@
     }
     .mainFoot{
         background: #409EFF;
+    }
+    .ec{
+        position: relative;
+    }
+    .time_select{
+        max-width:100%;
+        height:auto;
+
     }
 
 </style>

@@ -97,7 +97,7 @@
             </span>
           </el-dialog>
         </el-col></el-row>
-            <el-table :data="userList" border stripe>
+            <el-table :data="userList" border stripe style="position:relative">
         <el-table-column type="index"></el-table-column>
         <el-tableColumn label="姓名" prop="username"></el-tableColumn>
         <el-tableColumn label="操作" width="180px">
@@ -109,7 +109,7 @@
               type="danger"
               icon="el-icon-delete"
               size="mini"
-              @click="removeUserById(scope.row.id)"
+              @click="removeUserById(scope.row.username)"
             ></el-button>
             </template></el-tableColumn>
       </el-table>
@@ -131,10 +131,8 @@
                 query: '',
               },
                  // 获取用户列表数据,存放到userList中,查询条数放到total中
-                userList: [{
-                    username:'czf',
-                }],
-                total: 0,
+                userList: [],
+                
                 addUserForm: {
                 username: '',
                 password: '',
@@ -143,7 +141,7 @@
                     username: [
                   { required: true, message: '请输入合法的用户名', trigger: 'blur' },
                   {
-                    min: 3,
+                    min: 1,
                     max: 10,
                     message: '用户名的长度在3-10个字符之间',
                     trigger: 'blur',
@@ -152,9 +150,6 @@
                 password: [
                   { required: true, message: '请输入合法的密码', trigger: 'blur' },
                   {
-                    min: 6,
-                    max: 15,
-                    message: '密码的长度在6-15个字符之间',
                     trigger: 'blur',
                   },
                 ],
@@ -163,8 +158,8 @@
                 addDialogVisible: false,
             }
         },
-                created() {
-                    this.getUserList()
+        created() {
+                    this.getUserList();
                   },
         methods: {
             exits(){
@@ -178,13 +173,14 @@
             },
             addUser() {
 
-                    this.axios.post('http://localhost:5000/adduser',this.addUserForm).then((resp) =>{
+                    this.axios.post('http://localhost:5000/signup',this.addUserForm).then((resp) =>{
                     let data = resp.data;
                     if(data.toString()=="true"){
                 this.$message({
                     message: '添加成功',
                     type: 'success'
                 });
+
                     // 隐藏添加用户的对话框
                     this.addDialogVisible = false
                     // 重新获取用户列表
@@ -194,17 +190,15 @@
                     }
                 })
                   },
-             async getUserList() {
-                      const { data: res } = await this.$http.get('users', {
-                        params: this.queryInfo,
-                      })
-                      if (res.meta.status !== 200) return this.$message.error('数据获取失败')
-                      this.userList = res.data.users
-                      this.total = res.data.total
-                      console.log(res)
-                    },
+            async getUserList() {
+
+                let that = this;
+                    this.axios.get('http://localhost:5000/listUser').then(function (res) {
+                        that.userList = res.data.users;
+                  })
+                     },
             // 根据Id删除用户
-            async removeUserById(id) {
+            async removeUserById(username) {
               const confirmRes = await this.$confirm(
                 '此操作将永久删除该用户, 是否继续?',
                 '提示',
@@ -219,12 +213,17 @@
               if (confirmRes !== 'confirm') {
                 return this.$message.info('已取消删除')
               }
-              const { data: res } = await this.$http.delete('users/' + id)
-              if (res.meta.status !== 200) {
-                return this.$message.error('删除用户失败！')
-              }
-              this.$message.success('删除用户成功！')
-              this.getUserList()
+              console.log(username)
+                const deleteForm = {username: username};
+                this.axios.post('http://localhost:5000/deleteuser',deleteForm).then((res)=>{
+                  let data = res.data;
+                  if(data.toString()=="true"){
+                      this.$message.success('删除用户成功！')
+                      this.getUserList()
+                  }else{
+                      this.$message.success('删除用户失败')
+                  }
+              })
             },
 
 

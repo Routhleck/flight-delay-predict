@@ -72,8 +72,19 @@ def doSetDepartureAirport():
     print(data)
     firstair = data.get('showmsg')
     print(firstair)
-    setDepartureAirport(firstair)
-    return "true"
+    confirm = setDepartureAirport(firstair)
+    arriveWeatherList = []
+    for i in confirm:
+        arriveWeatherList.append({'date': str(str(i[8]) + '/' + str(i[9]) + '/' + str(i[10])),
+                                  'avg_temp': str(i[1]),
+                                  'max_temp': str(i[2]),
+                                  'min_temp': str(i[3]),
+                                  'prec': str(i[4]),
+                                  'pressure': str(i[5]),
+                                  'wind_dir': str(i[6]),
+                                  'wind_speed': str(i[7])
+                                  })
+    return jsonify(arriveWeatherList)
 
 
 # # 选择起始机场
@@ -85,24 +96,31 @@ def doSetDepartureAirport():
 # 选择到达机场
 @app.route('/setArriveAirport', methods=['post'])
 @cross_origin(supports_credentials=True)
-def doSetArriveAirport(arriveAirport):
+def doSetArriveAirport():
     data = request.get_json()
     print(data)
     secondair = data.get('showemsg')
     print(secondair)
-    confirm = setArriveAirport(arriveAirport)
+    confirm = setArriveAirport(secondair)
     return confirm
 
 
 # 延误预测
-@app.route('/delayPredict')
+@app.route('/delayPredict', methods=['post'])
+@cross_origin(supports_credentials=True)
 def doDelayPredict():
     # data = request.get_json()
     # print(data)
     # hour = data.get('hour')
     # print(hour)
-    hour = 13
+    data = request.get_json()
+    print(data)
+    hourString = data.get('value1')
+    hourString = hourString[0:2]
+    print(hourString)
+    hour = int(hourString)
     confirm = delayPredict(hour)
+    confirm = "true"
     return confirm
 
 

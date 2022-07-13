@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 import Login from "../views/Login";
-import MAININTER from '../views/MAIN-INTER.vue'
-import Register from "@/views/Register";
-import Manager from "@/views/Manager";
+import MAININTER from '../views/MAIN-INTER.vue';
+import Register from "../views/Register";
+import Manager from "../views/Manager";
 
 Vue.use(VueRouter)
 
