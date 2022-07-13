@@ -73,18 +73,26 @@ def doSetDepartureAirport():
     firstair = data.get('showmsg')
     print(firstair)
     confirm = setDepartureAirport(firstair)
-    arriveWeatherList = []
+    datalist = []
+    avg_temp = []
+    max_temp = []
+    min_temp = []
+    prec = []
+    pressure = []
+    wind_dir = []
+    wind_speed = []
     for i in confirm:
-        arriveWeatherList.append({'date': str(str(i[8]) + '/' + str(i[9]) + '/' + str(i[10])),
-                                  'avg_temp': str(i[1]),
-                                  'max_temp': str(i[2]),
-                                  'min_temp': str(i[3]),
-                                  'prec': str(i[4]),
-                                  'pressure': str(i[5]),
-                                  'wind_dir': str(i[6]),
-                                  'wind_speed': str(i[7])
-                                  })
-    return jsonify(arriveWeatherList)
+        datalist.append({'date': str(str(i[8]) + '/' + str(i[9]) + '/' + str(i[10]))})
+        avg_temp.append({'avg_temp': str(i[1])})
+        max_temp.append({'max_temp': str(i[2])})
+        min_temp.append({'min_temp': str(i[3])})
+        prec.append({'prec': str(i[4])})
+        pressure.append({'pressure': str(i[5])})
+        wind_dir.append({'wind_dir': str(i[6])})
+        wind_speed.append({'wind_speed': str(i[7])})
+    data_return = {'data': datalist, 'avg_temp': avg_temp, 'max_temp': max_temp, 'min_temp': min_temp, 'prec': prec,
+                   'pressure': pressure, 'wind_dir': wind_dir, 'wind_speed': wind_speed}
+    return jsonify(data_return)
 
 
 # # 选择起始机场
@@ -102,7 +110,26 @@ def doSetArriveAirport():
     secondair = data.get('showemsg')
     print(secondair)
     confirm = setArriveAirport(secondair)
-    return confirm
+    datalist = []
+    avg_temp = []
+    max_temp = []
+    min_temp = []
+    prec = []
+    pressure = []
+    wind_dir = []
+    wind_speed = []
+    for i in confirm:
+        datalist.append({'date': str(str(i[8]) + '/' + str(i[9]) + '/' + str(i[10]))})
+        avg_temp.append({'avg_temp': str(i[1])})
+        max_temp.append({'max_temp': str(i[2])})
+        min_temp.append({'min_temp': str(i[3])})
+        prec.append({'prec': str(i[4])})
+        pressure.append({'pressure': str(i[5])})
+        wind_dir.append({'wind_dir': str(i[6])})
+        wind_speed.append({'wind_speed': str(i[7])})
+    data_return = {'data': datalist, 'avg_temp': avg_temp, 'max_temp': max_temp, 'min_temp': min_temp, 'prec': prec,
+                   'pressure': pressure, 'wind_dir': wind_dir, 'wind_speed': wind_speed}
+    return jsonify(data_return)
 
 
 # 延误预测
@@ -117,11 +144,21 @@ def doDelayPredict():
     print(data)
     hourString = data.get('value1')
     hourString = hourString[0:2]
-    print(hourString)
     hour = int(hourString)
     confirm = delayPredict(hour)
-    confirm = "true"
-    return confirm
+    datalist = []
+    normal_prob = []
+    mild_prob = []
+    moderate_prob = []
+    serious_prob = []
+    for i in confirm:
+        datalist.append({'date': str(str(i[0]) + '/' + str(i[1]) + '/' + str(i[2]))})
+        normal_prob.append({'normal_prob':str(i[3])})
+        mild_prob.append({'mild_prob':str(i[4])})
+        moderate_prob.append({'moderate_prob':str(i[5])})
+        serious_prob.append({'serious_prob':str(i[6])})
+    data_return = {'date': datalist, 'normal_prob': normal_prob, 'mild_prob': mild_prob, 'moderate_prob': moderate_prob, 'serious_prob': serious_prob}
+    return jsonify(data_return)
 
 
 # 获取出发天气

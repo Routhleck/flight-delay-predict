@@ -47,7 +47,13 @@ def setDepartureAirport(departureAirport):
     # 起始机场天气预测
     isDeparture = True
     weather_predict_single(departureAirport, engine, session, isDeparture)
-    return "true"
+    sql = 'select * from departureWeather'
+    rs = session.execute(sql).fetchall()
+    pred = []
+    for i in rs:
+        pred.append(i)
+    session.close()
+    return pred
 
 # 选择到达机场
 def setArriveAirport(arriveAirport):
@@ -66,8 +72,14 @@ def setArriveAirport(arriveAirport):
 
     # 到达机场天气预测
     isDeparture = False
-    weather_predict_single(departureAirport, engine, session, isDeparture)
-    return "true"
+    weather_predict_single(arriveAirport, engine, session, isDeparture)
+    sql = 'select * from arriveWeather'
+    rs = session.execute(sql).fetchall()
+    pred = []
+    for i in rs:
+        pred.append(i)
+    session.close()
+    return pred
 
 # 延误预测
 def delayPredict(hour):
