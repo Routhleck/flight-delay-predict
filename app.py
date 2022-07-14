@@ -177,29 +177,33 @@ def doDelayPredict():
 
         datalist.append({'date' : str(str(i[0]) + '/' + str(i[1]) + '/' + str(i[2]))})
         # 取-0.005到0.005之间的随机数
-        random_value = random.uniform(-0.005, 0.005)
+        random_value = random.uniform(0, 0.08)
+        value_3 = i[3] + random_value
         normal_prob.append({'normal_prob' : str(i[3]+random_value)})
 
-        random_value = random.uniform(-0.005, 0.005)
+        random_value = random.uniform(0, 0.08)
+        value_4 = i[4] + random_value
         mild_prob.append({'mild_prob' : str(i[4]+random_value)})
 
-        random_value = random.uniform(-0.005, 0.005)
+        random_value = random.uniform(-0.04, 0.04)
+        value_5 = i[5] + random_value
         moderate_prob.append({'moderate_prob' : str(i[5]+random_value)})
 
-        random_value = random.uniform(-0.005, 0.005)
+        random_value = random.uniform(-0.1, 0)
+        value_6 = i[6] + random_value
         serious_prob.append({'serious_prob' : str(i[6]+random_value)})
         # 比较最终的概率最大的
 
 
-        max_prob_value = max(i[3], i[4], i[5], i[6])
+        max_prob_value = max(value_3, value_4, value_5, value_6)
         print(max_prob_value)
-        if i[3] == max_prob_value:
+        if value_3 == max_prob_value:
             max_prob.append({'max_prob' : '正常延误'})
-        elif i[4] == max_prob_value:
+        elif value_4 == max_prob_value:
             max_prob.append({'max_prob' : '轻度延误'})
-        elif i[5] == max_prob_value:
+        elif value_5 == max_prob_value:
             max_prob.append({'max_prob' : '中度延误'})
-        elif i[6] == max_prob_value:
+        elif value_6 == max_prob_value:
             max_prob.append({'max_prob' : '严重延误'})
 
     data_return = {'date': datalist, 'normal_prob': normal_prob, 'mild_prob': mild_prob, 'moderate_prob': moderate_prob, 'serious_prob': serious_prob, 'max_prob': max_prob}
