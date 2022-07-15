@@ -7,10 +7,6 @@ flight delay predict with weather data
 <!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 项目
-基于机器学习利用天气状况对具体航班延误状况的预测
-
-基于往年的航班和天气状况对航班延迟信息的预测
-
 基于往年航班和天气信息的对航班延迟信息的预测系统
 
 数据清洗项目
