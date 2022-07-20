@@ -1,5 +1,3 @@
-import json
-
 from flask import Flask, request, jsonify
 
 from API.algorithm import setDepartureAirport, setArriveAirport, delayPredict, getDepartureWeather, getArriveWeather
