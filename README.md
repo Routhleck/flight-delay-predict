@@ -2,8 +2,18 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 # flight-delay-predict
 flight delay predict with weather data
+
+![img](https://raw.githubusercontent.com/Routhleck/flight-delay-predict/delay-master/img/图片1.png)
+
+![img](https://raw.githubusercontent.com/Routhleck/flight-delay-predict/delay-master/img/图片2.png)
+
+![img](https://raw.githubusercontent.com/Routhleck/flight-delay-predict/delay-master/img/图片3.png)
+
+![img](https://raw.githubusercontent.com/Routhleck/flight-delay-predict/delay-master/img/图片4.png)
+
 <!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 项目
@@ -22,17 +32,17 @@ flight delay predict with weather data
 5.其中对最原始的数据集的处理还有：
 
   通过原始的时间戳计算计划出发、达到与实际出发、达到的时间
-  
+
   通过不同机场之间的经纬度计算出各个机场之间的距离并整合填充至各个航班相应的信息栏中
-  
+
 6.通过构建的机场-城市参考字典进行天气信息的爬取、填充
 
   首先构建不同城市的各个的以天为单位的天气信息文件.CSV
-  
+
   进行相应的网络爬虫读取数据并写道城市天气文件中
-  
+
   通过城市->定位所要访问的文件；预计出发日期->定位到具体要填充的项
-  
+
 7.之后保存写入，得到初始清洗好的数据集了
 
 
@@ -46,15 +56,15 @@ npm install --save-dev less-loader less
 
 
 ### 人员分工：
-  
+
   #### 项目经理 解世超
-  
+
   #### 前端工程师 蒋涵、陈泽锋
-  
+
   #### 后端工程师 何毅、江顺
-  
+
   #### 数据工程师 贺思超
-  
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
