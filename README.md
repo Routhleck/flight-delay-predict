@@ -14,6 +14,22 @@ flight delay predict with weather data
 
 ![img](https://raw.githubusercontent.com/Routhleck/flight-delay-predict/delay-master/img/图片4.png)
 
+# 注意⚠⚠⚠
+
+## 数据库
+
+数据库初始化文件在`dataset-and-model`的branch中，design文件夹下的all.sql，
+
+**注意！！，因为在答辩时天气预测时的爬虫网站出错，所以临时换用了其他的方法，需要在`arriveweather`这个表里加上`departureweather`的`year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob`的相同属性，并删除`date`属性**
+
+其次还需要INSERT`airline`和`airport`这两个表的数据，分别在`delay-master`branch的`modelTrain/predict/dict_id.csv`和`dataset-and-model`branch的`dataset/airport.csv`
+
+最后别忘了在`API/algorithm.py`和`API/loginAndRegister.py`开始重新配置你的(云)数据库
+
+## 天气数据预测
+
+因为答辩的时候，爬取的天气网站临时维护，所以被迫将气象预测换成直接读取往年同一天的消息，现在已经能重新使用，如果需要加入天气预测则可以再algorithm.py(如果我没记错的话)重新恢复下天气预测功能
+
 <!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 项目
