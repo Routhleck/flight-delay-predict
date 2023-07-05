@@ -1,0 +1,7 @@
+.idea
+__pycache__
+API/__pycache__
+modelTrain/__pycache__
+modelTrain/predict/__pycache__
+modelTrain/weather_predict/__pycache__
+web/.idea
