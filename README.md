@@ -4,7 +4,9 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # flight-delay-predict
-flight delay predict with weather data
+[English](README.md)|[中文](README_CN.md)
+
+Predicting flight delays with weather data.
 
 ![img](https://raw.githubusercontent.com/Routhleck/flight-delay-predict/delay-master/img/图片1.png)
 
@@ -14,72 +16,59 @@ flight delay predict with weather data
 
 ![img](https://raw.githubusercontent.com/Routhleck/flight-delay-predict/delay-master/img/图片4.png)
 
-# 注意⚠⚠⚠
+# Caution ⚠⚠⚠
 
-## 数据库
+## Database
 
-数据库初始化文件在`dataset-and-model`的branch中，design文件夹下的all.sql，
+Database initialization files are located in the `dataset-and-model` branch, under the design folder in all.sql.
 
-**注意！！，因为在答辩时天气预测时的爬虫网站出错，所以临时换用了其他的方法，需要在`arriveweather`这个表里加上`departureweather`的`year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob`的相同属性，并删除`date`属性**
+**Note!! Due to an error with the weather prediction website during the presentation, another method was temporarily used. You'll need to add the same attributes from `departureweather` (`year, month, day, normal_prob, mild_prob, moderate_prob, serious_prob`) to the `arriveweather` table and delete the `date` attribute.**
 
-其次还需要INSERT`airline`和`airport`这两个表的数据，分别在`delay-master`branch的`modelTrain/predict/dict_id.csv`和`dataset-and-model`branch的`dataset/airport.csv`
+Next, you need to INSERT data into the `airline` and `airport` tables, which are located in the `delay-master` branch's `modelTrain/predict/dict_id.csv` and the `dataset-and-model` branch's `dataset/airport.csv`, respectively.
 
-最后别忘了在`API/algorithm.py`和`API/loginAndRegister.py`开始重新配置你的(云)数据库
+Finally, don't forget to reconfigure your (cloud) database in `API/algorithm.py` and `API/loginAndRegister.py`.
 
-## 天气数据预测
+## Weather Data Prediction
 
-因为答辩的时候，爬取的天气网站临时维护，所以被迫将气象预测换成直接读取往年同一天的消息，现在已经能重新使用，如果需要加入天气预测则可以再algorithm.py(如果我没记错的话)重新恢复下天气预测功能
+During the defense, the weather site being scraped was temporarily down, so weather predictions were replaced with data from the same day in previous years. It can now be used again. If you need to reintegrate weather predictions, you can restore the weather prediction function in algorithm.py (if I recall correctly).
 
 <!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-# 项目
-基于往年航班和天气信息的对航班延迟信息的预测系统
+# Project
+A flight delay prediction system based on previous years' flight and weather information.
 
-数据清洗项目
+Data Cleaning Project:
 
-1. 首先根据原航班信息数据对应天气信息网站手动做出机场-城市编码参考字典，其中只选择了部分机场
-
-2. 对应填充机场的经纬度
-
-3. 首先进行第一次清洗：删除出发、到达机场不在给出的参考机场字典中的项
-
-4. 进行第二次清洗：删除同一时间航线（即为出发地点和到达地点都一样的航班）重复的项
-
-5. 其中对最原始的数据集的处理还有：
-
-  通过原始的时间戳计算计划出发、达到与实际出发、达到的时间
-
-  通过不同机场之间的经纬度计算出各个机场之间的距离并整合填充至各个航班相应的信息栏中
-
-6. 通过构建的机场-城市参考字典进行天气信息的爬取、填充
-
-  首先构建不同城市的各个的以天为单位的天气信息文件.CSV
-
-  进行相应的网络爬虫读取数据并写道城市天气文件中
-
-  通过城市->定位所要访问的文件；预计出发日期->定位到具体要填充的项
-
-7. 之后保存写入，得到初始清洗好的数据集了
-
+1. First, manually create an airport-city code reference dictionary based on the original flight information data. Only a selection of airports is chosen.
+2. Fill in the corresponding airport longitude and latitude.
+3. First, clean: remove items where the departure and arrival airports are not in the provided reference airport dictionary.
+4. Second cleaning: remove duplicated items for the same flight route (i.e., where departure and arrival points are the same).
+5. The handling of the most original dataset also includes:
+  - Calculate the planned departure, arrival, actual departure, and arrival times from the original timestamp.
+  - Calculate the distance between different airports based on their longitude and latitude and integrate it into the corresponding flight information column.
+6. Scrape and fill in weather information using the constructed airport-city reference dictionary.
+  - First, construct daily weather information files for different cities in .CSV format.
+  - Scrape data through web crawlers and write to the city weather file.
+  - Use the city to locate the file to access; the estimated departure date to locate the specific item to fill.
+7. Finally, save the input to get the initially cleaned dataset.
 
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-#Project Dependence
+# Project Dependence
 npm install echarts@4.9
 npm install --save-dev less-loader less
 
+### Team Allocation:
 
-### 人员分工：
-
-  #### 项目经理 解世超
-
-  #### 前端工程师 蒋涵、陈泽锋
-
-  #### 后端工程师 何毅、江顺
-
-  #### 数据工程师 贺思超
+  #### Project Manager: 解世超 (Jie Shichao)
+  
+  #### Front-end Engineers: 蒋涵 (Jiang Han), 陈泽锋 (Chen Zefeng)
+  
+  #### Back-end Engineers: 何毅 (He Yi), 江顺 (Jiang Shun)
+  
+  #### Data Engineers: 贺思超 (He Sichao)
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -101,3 +90,4 @@ npm install --save-dev less-loader less
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
